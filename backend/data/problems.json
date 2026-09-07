@@ -1,0 +1,19 @@
+[
+  {
+    "id": "1788799006550",
+    "description": "Hamare ward mein 5 din se paani nahi aa raha hai aur log tanker se paani khareed rahe hain.",
+    "location": "Ranchi, Ward 4",
+    "imageUrl": null,
+    "category": "Other",
+    "summary": "Hamare ward mein 5 din se paani nahi aa raha hai aur log tanker se paani khareed rahe hain.",
+    "confidence": 0.2,
+    "duplicateFound": false,
+    "duplicateOf": null,
+    "duplicateCount": 0,
+    "assignedCollege": null,
+    "routingReason": "BIT Mesra was selected because its expertise matches the Other domain.",
+    "humanReview": true,
+    "status": "under_review",
+    "createdAt": "2026-09-07T16:36:46.550Z"
+  }
+]

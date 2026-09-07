@@ -1,0 +1,58 @@
+[
+  {
+    "name": "BIT Mesra",
+    "location": "Ranchi",
+    "expertise": [
+      "engineering",
+      "water management",
+      "technology",
+      "environment",
+      "computer science",
+      "data science"
+    ]
+  },
+  {
+    "name": "IIT (ISM) Dhanbad",
+    "location": "Dhanbad",
+    "expertise": [
+      "mining",
+      "geology",
+      "environment",
+      "energy",
+      "engineering"
+    ]
+  },
+  {
+    "name": "NIT Jamshedpur",
+    "location": "Jamshedpur",
+    "expertise": [
+      "engineering",
+      "transportation",
+      "infrastructure",
+      "computer science",
+      "manufacturing"
+    ]
+  },
+  {
+    "name": "XLRI Jamshedpur",
+    "location": "Jamshedpur",
+    "expertise": [
+      "management",
+      "social impact",
+      "business",
+      "human resources",
+      "entrepreneurship"
+    ]
+  },
+  {
+    "name": "Central University of Jharkhand",
+    "location": "Ranchi",
+    "expertise": [
+      "social sciences",
+      "environment",
+      "education",
+      "rural development",
+      "public policy"
+    ]
+  }
+]
