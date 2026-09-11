@@ -1,0 +1,12 @@
+{
+  "model": "deepseek-ai/deepseek-v4-flash-0731",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Say hello in one sentence."
+    }
+  ],
+  "max_tokens": 50,
+  "temperature": 0.2,
+  "stream": false
+}

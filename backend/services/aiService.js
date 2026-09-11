@@ -1,10 +1,48 @@
-const OpenAI = require("openai");
+const { execFile } = require("child_process");
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+const callNvidia = (prompt) => {
+  return new Promise((resolve, reject) => {
+    const body = JSON.stringify({
+      model: "deepseek-ai/deepseek-v4-flash-0731",
+      messages: [
+        {
+          role: "user",
+          content: prompt
+        }
+      ],
+      temperature: 0.2,
+      max_tokens: 1000,
+      stream: false
+    });
+
+    execFile(
+      "curl.exe",
+      [
+        "https://integrate.api.nvidia.com/v1/chat/completions",
+        "-H", "Content-Type: application/json",
+        "-H", `Authorization: Bearer ${process.env.NVIDIA_API_KEY}`,
+        "--data-binary", body
+      ],
+      { maxBuffer: 1024 * 1024 },
+      (error, stdout, stderr) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+
+        try {
+          resolve(JSON.parse(stdout));
+        } catch {
+          reject(new Error("Invalid NVIDIA response"));
+        }
+      }
+    );
+  });
+};
+
 
 const analyseProblem = async (description, location) => {
+
   const prompt = `
 You are an AI assistant for a government citizen-problem
 crowdsourcing platform in Jharkhand.
@@ -19,12 +57,12 @@ ${description}
 
 Choose exactly ONE category from:
 
-- Water & Sanitation
-- Roads & Transport
+- Water
+- Agriculture
 - Healthcare
 - Education
 - Environment
-- Agriculture
+- Roads & Transport
 - Electricity
 - Public Safety
 - Waste Management
@@ -40,23 +78,25 @@ Return ONLY valid JSON in this exact structure:
 }
 
 confidence must be a number between 0 and 1.
-
-The reason should briefly explain why the complaint belongs
-to the selected category.
 `;
 
   try {
-    const response = await client.responses.create({
-      model: "gpt-5-mini",
-      input: prompt
-    });
 
-    const result = JSON.parse(response.output_text);
+    console.log("Calling NVIDIA API...");
+
+    const response = await callNvidia(prompt);
+
+    console.log("NVIDIA API responded!");
+
+    const result = JSON.parse(
+      response.choices[0].message.content
+    );
 
     return result;
 
   } catch (error) {
-    console.error("AI analysis error:", error.message);
+
+    console.error("AI ANALYSIS ERROR:", error);
 
     return {
       category: "Other",
@@ -66,6 +106,7 @@ to the selected category.
     };
   }
 };
+
 
 module.exports = {
   analyseProblem

@@ -148,6 +148,18 @@ const createProblem = async (req, res) => {
         // CREATE NEW PROBLEM
         // --------------------------------
 
+        // Update duplicate count of the original problem
+        if (duplicateResult.duplicateFound) {
+            const originalProblemIndex = existingProblems.findIndex(
+                (problem) => problem.id === duplicateResult.duplicateOf
+            );
+
+            if (originalProblemIndex !== -1) {
+                existingProblems[originalProblemIndex].duplicateCount =
+                    (existingProblems[originalProblemIndex].duplicateCount || 0) + 1;
+            }
+        }
+
         const newProblem = {
 
             id:
@@ -177,10 +189,7 @@ const createProblem = async (req, res) => {
             duplicateOf:
                 duplicateResult.duplicateOf,
 
-            duplicateCount:
-                duplicateResult.duplicateFound
-                    ? 1
-                    : 0,
+            duplicateCount: 0,
 
             assignedCollege:
                 humanReview
@@ -291,8 +300,117 @@ const getProblemById = (req, res) => {
   }
 };
 
+const getProblemStats = (req, res) => {
+  try {
+    const problems = readProblems();
+
+    const totalProblems = problems.length;
+
+    const assigned = problems.filter(
+      (problem) => problem.status === "assigned"
+    ).length;
+
+    const underReview = problems.filter(
+      (problem) => problem.status === "under_review"
+    ).length;
+
+    const inProgress = problems.filter(
+      (problem) => problem.status === "in_progress"
+    ).length;
+
+    const solved = problems.filter(
+      (problem) => problem.status === "solved"
+    ).length;
+
+    const categoryCounts = {};
+
+    problems.forEach((problem) => {
+      const category = problem.category || "Other";
+
+      categoryCounts[category] =
+        (categoryCounts[category] || 0) + 1;
+    });
+
+    return res.status(200).json({
+      success: true,
+      stats: {
+        totalProblems,
+        assigned,
+        underReview,
+        inProgress,
+        solved,
+        categoryCounts
+      }
+    });
+
+  } catch (error) {
+    console.error("Error fetching statistics:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "Could not fetch problem statistics."
+    });
+  }
+};
+
+const updateProblemStatus = (req, res) => {
+  try {
+    const problems = readProblems();
+
+    const problemIndex = problems.findIndex(
+      (problem) => problem.id === req.params.id
+    );
+
+    if (problemIndex === -1) {
+      return res.status(404).json({
+        success: false,
+        message: "Problem not found."
+      });
+    }
+
+    const { status } = req.body;
+
+    const allowedStatuses = [
+      "under_review",
+      "assigned",
+      "in_progress",
+      "testing",
+      "solved"
+    ];
+
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid status.",
+        allowedStatuses
+      });
+    }
+
+    problems[problemIndex].status = status;
+    problems[problemIndex].updatedAt = new Date().toISOString();
+
+    saveProblems(problems);
+
+    return res.status(200).json({
+      success: true,
+      message: "Problem status updated successfully.",
+      problem: problems[problemIndex]
+    });
+
+  } catch (error) {
+    console.error("Error updating problem status:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "Could not update problem status."
+    });
+  }
+};
+
 module.exports = {
   createProblem,
   getProblems,
-  getProblemById
+  getProblemById,
+  getProblemStats,
+  updateProblemStatus
 };
