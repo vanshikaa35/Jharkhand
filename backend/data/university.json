@@ -1,0 +1,112 @@
+[
+  {
+    "ID": "U001",
+    "Institution": "Birsa Agricultural University (BAU)",
+    "Type": "State Agricultural University",
+    "District": "Ranchi",
+    "Key departments / labs": "Agricultural Engineering, Agronomy, Irrigation & Drainage",
+    "Expertise keywords": "irrigation, drip, rainwater harvesting, doba, soil–water conservation",
+    "Notable past work / role": "Drip irrigation & doba interventions for smallholders",
+    "Capability": "High",
+    "Source": "BAU drip study"
+  },
+  {
+    "ID": "U002",
+    "Institution": "Central University of Jharkhand (CUJ)",
+    "Type": "Central University",
+    "District": "Ranchi",
+    "Key departments / labs": "Civil/Water Engineering, Environmental Sciences, CSE",
+    "Expertise keywords": "water resources, irrigation, environmental engg, AI, NLP",
+    "Notable past work / role": "Water engineering projects; AI/NLP research in CSE",
+    "Capability": "High",
+    "Source": "CUJ departments"
+  },
+  {
+    "ID": "U003",
+    "Institution": "BIT Mesra",
+    "Type": "Deemed University",
+    "District": "Ranchi",
+    "Key departments / labs": "Civil & Environmental Engineering",
+    "Expertise keywords": "water quality, groundwater, hydrology, wastewater, solid waste",
+    "Notable past work / role": "Research on groundwater, water sustainability, remediation",
+    "Capability": "High",
+    "Source": "BIT Mesra CEE"
+  },
+  {
+    "ID": "U004",
+    "Institution": "IIT (ISM) Dhanbad",
+    "Type": "IIT",
+    "District": "Dhanbad",
+    "Key departments / labs": "Environmental Science & Engg; Centre for Water Resource Management",
+    "Expertise keywords": "water treatment, groundwater, watershed, RS & GIS, climate",
+    "Notable past work / role": "Watershed, groundwater, water treatment research",
+    "Capability": "High",
+    "Source": "IIT ISM CWRM"
+  },
+  {
+    "ID": "U005",
+    "Institution": "NIT Jamshedpur",
+    "Type": "NIT",
+    "District": "Jamshedpur",
+    "Key departments / labs": "Computer Science & Engineering",
+    "Expertise keywords": "AI, NLP, ML, deep learning, computer vision",
+    "Notable past work / role": "AI/NLP research projects",
+    "Capability": "Medium–High",
+    "Source": "NIT JSR CSE"
+  },
+  {
+    "ID": "U006",
+    "Institution": "MRHRU, Namkum",
+    "Type": "Govt Research Unit (ICMR-associated)",
+    "District": "Ranchi",
+    "Key departments / labs": "Rural Health Research, Public Health",
+    "Expertise keywords": "rural health, tribal health, health systems, telemedicine",
+    "Notable past work / role": "Rural/tribal health research; telemedicine collaboration",
+    "Capability": "Medium",
+    "Source": "MRHRU page"
+  },
+  {
+    "ID": "U007",
+    "Institution": "JSLPS",
+    "Type": "Govt Society / Livelihood Agency",
+    "District": "Ranchi (statewide)",
+    "Key departments / labs": "Livelihoods, Agriculture & Water, FPO support",
+    "Expertise keywords": "micro-irrigation, livelihoods, FPOs, agriculture intensification",
+    "Notable past work / role": "I-HIMDI micro-drip irrigation in 12 districts",
+    "Capability": "High",
+    "Source": "I-HIMDI survey"
+  },
+  {
+    "ID": "U008",
+    "Institution": "JREDA",
+    "Type": "State Renewable Energy Agency",
+    "District": "Ranchi",
+    "Key departments / labs": "Solar Energy, Renewable Energy for Agriculture",
+    "Expertise keywords": "solar cold storage, solar dryers, renewable energy, FPOs",
+    "Notable past work / role": "Solar cold storage & dryers for FPOs",
+    "Capability": "Medium–High",
+    "Source": "JREDA solar"
+  },
+  {
+    "ID": "U009",
+    "Institution": "ICAR-IARI Jharkhand",
+    "Type": "National Agri Research Institute",
+    "District": "Hazaribagh (Barhi, Gauria Karma)",
+    "Key departments / labs": "Agriculture & Allied Sectors",
+    "Expertise keywords": "crop productivity, NRM, soil–water, sustainable agri",
+    "Notable past work / role": "Crop & soil–water research for Jharkhand",
+    "Capability": "Medium–High",
+    "Source": "ICAR-IARI JH"
+  },
+  {
+    "ID": "U010",
+    "Institution": "J-Hub Incubation Centre",
+    "Type": "Incubation Centre",
+    "District": "Ranchi",
+    "Key departments / labs": "Innovation, Entrepreneurship, Tech Startups",
+    "Expertise keywords": "startup incubation, innovation, mentorship, social tech",
+    "Notable past work / role": "Support for university-born startup ideas",
+    "Capability": "Emerging",
+    "Source": "J-Hub news"
+  }
+]

@@ -1,0 +1,199 @@
+{
+  "quantitative_indicators": [
+    {
+      "indicator_id": "QI001",
+      "indicator_name": "Child Stunting (Under 5)",
+      "domain": "Healthcare",
+      "jharkhand_value": "35.0%",
+      "national_average": "29.3%",
+      "source": "NFHS-6 (MoHFW)",
+      "date_year": "2023-24"
+    },
+    {
+      "indicator_id": "QI002",
+      "indicator_name": "Child Underweight (Under 5)",
+      "domain": "Healthcare",
+      "jharkhand_value": "41.1%",
+      "national_average": "31.8%",
+      "source": "NFHS-6 (MoHFW)",
+      "date_year": "2023-24"
+    },
+    {
+      "indicator_id": "QI003",
+      "indicator_name": "Child Wasting (Under 5)",
+      "domain": "Healthcare",
+      "jharkhand_value": "~20.0%",
+      "national_average": "19.0%",
+      "source": "NFHS-6 (MoHFW)",
+      "date_year": "2023-24"
+    },
+    {
+      "indicator_id": "QI004",
+      "indicator_name": "Full Child Immunization",
+      "domain": "Healthcare",
+      "jharkhand_value": "78.1%",
+      "national_average": "82.6%",
+      "source": "NFHS-6 (MoHFW)",
+      "date_year": "2023-24"
+    },
+    {
+      "indicator_id": "QI005",
+      "indicator_name": "Maternal Mortality Ratio",
+      "domain": "Healthcare",
+      "jharkhand_value": "54 per 1 lakh live births",
+      "national_average": "88 per 1 lakh live births",
+      "source": "SRS Bulletin (RGI, MHA)",
+      "date_year": "2021-23"
+    },
+    {
+      "indicator_id": "QI006",
+      "indicator_name": "Infant Mortality Rate",
+      "domain": "Healthcare",
+      "jharkhand_value": "37 per 1,000 live births",
+      "national_average": "28 per 1,000 live births",
+      "source": "NFHS-5 (MoHFW)",
+      "date_year": "2019-21"
+    },
+    {
+      "indicator_id": "QI007",
+      "indicator_name": "Total Teacher Vacancies",
+      "domain": "Education",
+      "jharkhand_value": "99,565",
+      "national_average": "9.82 lakh",
+      "source": "UDISE+ (MoE)",
+      "date_year": "2025-26"
+    },
+    {
+      "indicator_id": "QI008",
+      "indicator_name": "Elementary Teacher Vacancies",
+      "domain": "Education",
+      "jharkhand_value": "80,341",
+      "national_average": "5.72 lakh",
+      "source": "UDISE+ (MoE)",
+      "date_year": "2025-26"
+    },
+    {
+      "indicator_id": "QI009",
+      "indicator_name": "Single-Teacher Schools",
+      "domain": "Education",
+      "jharkhand_value": "9,827",
+      "national_average": "1,00,843",
+      "source": "UDISE+ (MoE)",
+      "date_year": "2025-26"
+    },
+    {
+      "indicator_id": "QI010",
+      "indicator_name": "Crimes Against Women (Annual)",
+      "domain": "Public Safety",
+      "jharkhand_value": "~5,153",
+      "national_average": "—",
+      "source": "NCRB/SCRB (MHA)",
+      "date_year": "2025"
+    },
+    {
+      "indicator_id": "QI011",
+      "indicator_name": "Road Accident Deaths",
+      "domain": "Roads & Transport",
+      "jharkhand_value": "4,114",
+      "national_average": "1,72,836",
+      "source": "MoRTH",
+      "date_year": "2024"
+    },
+    {
+      "indicator_id": "QI012",
+      "indicator_name": "Road Accidents",
+      "domain": "Roads & Transport",
+      "jharkhand_value": "5,196",
+      "national_average": "4,76,456",
+      "source": "MoRTH",
+      "date_year": "2024"
+    },
+    {
+      "indicator_id": "QI013",
+      "indicator_name": "Multidimensional Poverty Rate",
+      "domain": "Other",
+      "jharkhand_value": "23.3%",
+      "national_average": "11.3%",
+      "source": "NITI Aayog",
+      "date_year": "2022-23"
+    },
+    {
+      "indicator_id": "QI014",
+      "indicator_name": "Unemployment Rate (15+ years)",
+      "domain": "Other",
+      "jharkhand_value": "3.2%",
+      "national_average": "5.5-6.7%",
+      "source": "PLFS (MoSPI)",
+      "date_year": "Oct-Dec 2025"
+    },
+    {
+      "indicator_id": "QI015",
+      "indicator_name": "Rural Tap Water Coverage",
+      "domain": "Water",
+      "jharkhand_value": "55.18%",
+      "national_average": "82.24%",
+      "source": "JJM-IMIS (MoJS)",
+      "date_year": "Mar 2026"
+    },
+    {
+      "indicator_id": "QI016",
+      "indicator_name": "Rainfall Deficit",
+      "domain": "Agriculture",
+      "jharkhand_value": "-34%",
+      "national_average": "-24%",
+      "source": "IMD (MoES)",
+      "date_year": "Jun-Jul 2026"
+    },
+    {
+      "indicator_id": "QI017",
+      "indicator_name": "Districts with Deficient Rainfall",
+      "domain": "Agriculture",
+      "jharkhand_value": "20 of 24 (83%)",
+      "national_average": "397 districts",
+      "source": "IMD (MoES)",
+      "date_year": "2026"
+    },
+    {
+      "indicator_id": "QI018",
+      "indicator_name": "PMAY-G Exclusion",
+      "domain": "Other",
+      "jharkhand_value": "6.32 lakh (28%)",
+      "national_average": "—",
+      "source": "CAG Report No. 5 of 2026",
+      "date_year": "2026"
+    },
+    {
+      "indicator_id": "QI019",
+      "indicator_name": "Budget Unutilized",
+      "domain": "Other",
+      "jharkhand_value": "₹31,110 crore (20.61%)",
+      "national_average": "—",
+      "source": "CAG Report No. 5 of 2026",
+      "date_year": "2024-25"
+    },
+    {
+      "indicator_id": "QI020",
+      "indicator_name": "Fluoride Contamination",
+      "domain": "Water",
+      "jharkhand_value": "4-4.5 mg/L",
+      "national_average": "—",
+      "source": "CGWB (MoJS)",
+      "date_year": "2025"
+    }
+  ],
+  "metadata": {
+    "total_indicators": 20,
+    "domains": {
+      "Healthcare": 6,
+      "Education": 3,
+      "Public Safety": 1,
+      "Roads & Transport": 2,
+      "Water": 3,
+      "Agriculture": 3,
+      "Other": 4
+    },
+    "data_year_range": "2019-2026",
+    "all_sources_official": true,
+    "last_updated": "2026-09-12"
+  }
+}
