@@ -1,0 +1,322 @@
+[
+  {
+    "problem_id": "W1",
+    "problem_description": "Groundwater depletion",
+    "sector": "Water",
+    "solution_name": "Atal Bhujal Yojana",
+    "institution_name": "Central Ground Water Board (CGWB)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "W2",
+    "problem_description": "Contaminated drinking water",
+    "sector": "Water",
+    "solution_name": "Jal Jeevan Mission (JJM)",
+    "institution_name": "Ministry of Jal Shakti",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "W3",
+    "problem_description": "Urban wastewater treatment deficits",
+    "sector": "Water",
+    "solution_name": "Decentralized wastewater treatment (DEWATS)",
+    "institution_name": "IIT Delhi (Hydrology & Water Resources)",
+    "institution_type": "University/Research"
+  },
+  {
+    "problem_id": "W4",
+    "problem_description": "Unreliable piped supply",
+    "sector": "Water",
+    "solution_name": "Smart water meters & IoT leak detection",
+    "institution_name": "Delhi Jal Board (DJB)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "A1",
+    "problem_description": "Low water-use efficiency in agriculture",
+    "sector": "Agriculture",
+    "solution_name": "PMKSY (Pradhan Mantri Krishi Sinchayee Yojana)",
+    "institution_name": "Ministry of Agriculture & Farmers Welfare",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "A2",
+    "problem_description": "Soil degradation",
+    "sector": "Agriculture",
+    "solution_name": "Soil Health Card Scheme",
+    "institution_name": "ICAR (Indian Council of Agricultural Research)",
+    "institution_type": "University/Research"
+  },
+  {
+    "problem_id": "A3",
+    "problem_description": "Limited market access for farmers",
+    "sector": "Agriculture",
+    "solution_name": "e-NAM",
+    "institution_name": "e-NAM portal",
+    "institution_type": "Platform/Initiative"
+  },
+  {
+    "problem_id": "A4",
+    "problem_description": "Post-harvest losses",
+    "sector": "Agriculture",
+    "solution_name": "Precision agriculture (drones, sensors)",
+    "institution_name": "Jain Irrigation",
+    "institution_type": "Company/Industry"
+  },
+  {
+    "problem_id": "H1",
+    "problem_description": "High out-of-pocket health expenditure",
+    "sector": "Healthcare",
+    "solution_name": "Ayushman Bharat PM-JAY",
+    "institution_name": "National Health Authority (NHA)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "H2",
+    "problem_description": "Weak primary care",
+    "sector": "Healthcare",
+    "solution_name": "Ayushman Bharat HWCs",
+    "institution_name": "Ministry of Health & Family Welfare (MoHFW)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "H3",
+    "problem_description": "Specialist shortages in rural areas",
+    "sector": "Healthcare",
+    "solution_name": "eSanjeevani telemedicine",
+    "institution_name": "eSanjeevani portal",
+    "institution_type": "Platform/Initiative"
+  },
+  {
+    "problem_id": "H4",
+    "problem_description": "Data fragmentation in health",
+    "sector": "Healthcare",
+    "solution_name": "ABHA (digital health ID)",
+    "institution_name": "National Health Authority (NHA)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "E1",
+    "problem_description": "Learning poverty",
+    "sector": "Education",
+    "solution_name": "Samagra Shiksha Abhiyan",
+    "institution_name": "Ministry of Education",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "E2",
+    "problem_description": "Digital divide in education",
+    "sector": "Education",
+    "solution_name": "PM eVIDYA (DIKSHA)",
+    "institution_name": "DIKSHA platform",
+    "institution_type": "Platform/Initiative"
+  },
+  {
+    "problem_id": "E3",
+    "problem_description": "Teacher shortages",
+    "sector": "Education",
+    "solution_name": "DIKSHA digital content",
+    "institution_name": "NCERT",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "E4",
+    "problem_description": "Skill mismatch",
+    "sector": "Education",
+    "solution_name": "Remedial learning (NIPUN Bharat)",
+    "institution_name": "TISS",
+    "institution_type": "University/Research"
+  },
+  {
+    "problem_id": "EN1",
+    "problem_description": "Air pollution (PM2.5)",
+    "sector": "Environment",
+    "solution_name": "National Clean Air Programme (NCAP)",
+    "institution_name": "Ministry of Environment, Forest and Climate Change (MoEFCC)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "EN2",
+    "problem_description": "Loss of green cover",
+    "sector": "Environment",
+    "solution_name": "CAMPA (Compensatory Afforestation Fund)",
+    "institution_name": "CPCB",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "EN3",
+    "problem_description": "Climate risks",
+    "sector": "Environment",
+    "solution_name": "Afforestation drives",
+    "institution_name": "IIT Delhi (Centre for Atmospheric Sciences)",
+    "institution_type": "University/Research"
+  },
+  {
+    "problem_id": "EN4",
+    "problem_description": "Waste mismanagement",
+    "sector": "Environment",
+    "solution_name": "Air quality monitoring (SAFAR, CPCB)",
+    "institution_name": "SAFAR",
+    "institution_type": "Platform/Initiative"
+  },
+  {
+    "problem_id": "T1",
+    "problem_description": "Congestion",
+    "sector": "Roads & Transport",
+    "solution_name": "PM Gati Shakti",
+    "institution_name": "Ministry of Road Transport & Highways (MoRTH)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "T2",
+    "problem_description": "Road safety",
+    "sector": "Roads & Transport",
+    "solution_name": "Intelligent Transport Systems (ITS)",
+    "institution_name": "IIT Delhi (TRIPP)",
+    "institution_type": "University/Research"
+  },
+  {
+    "problem_id": "T3",
+    "problem_description": "Last-mile connectivity gaps",
+    "sector": "Roads & Transport",
+    "solution_name": "Metro rail networks",
+    "institution_name": "DMRC",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "T4",
+    "problem_description": "Freight inefficiencies",
+    "sector": "Roads & Transport",
+    "solution_name": "FAME India",
+    "institution_name": "Ola Electric",
+    "institution_type": "Company/Industry"
+  },
+  {
+    "problem_id": "EL1",
+    "problem_description": "Distribution losses (AT&C)",
+    "sector": "Electricity",
+    "solution_name": "Smart meters & prepaid meters",
+    "institution_name": "Delhi DISCOMs (BSES, TPDDL, TPVNL)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "EL2",
+    "problem_description": "Reliability issues",
+    "sector": "Electricity",
+    "solution_name": "Saubhagya (PM Sahaj Bijli Har Ghar)",
+    "institution_name": "Ministry of Power",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "EL3",
+    "problem_description": "Renewable integration challenges",
+    "sector": "Electricity",
+    "solution_name": "PM-KUSUM",
+    "institution_name": "MNRE",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "EL4",
+    "problem_description": "Affordability for low-income households",
+    "sector": "Electricity",
+    "solution_name": "Rooftop solar subsidies",
+    "institution_name": "IIT Delhi (Centre for Energy Studies)",
+    "institution_type": "University/Research"
+  },
+  {
+    "problem_id": "S1",
+    "problem_description": "Crime hotspots",
+    "sector": "Public Safety",
+    "solution_name": "CCTV surveillance networks",
+    "institution_name": "Delhi Police",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "S2",
+    "problem_description": "Women’s safety concerns",
+    "sector": "Public Safety",
+    "solution_name": "Nirbhaya Fund",
+    "institution_name": "Ministry of Home Affairs (MHA)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "S3",
+    "problem_description": "Disaster preparedness gaps",
+    "sector": "Public Safety",
+    "solution_name": "National Disaster Management Plan (NDMP)",
+    "institution_name": "NDMA",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "S4",
+    "problem_description": "Cybercrime rise",
+    "sector": "Public Safety",
+    "solution_name": "Emergency response system (112)",
+    "institution_name": "IIIT Delhi",
+    "institution_type": "University/Research"
+  },
+  {
+    "problem_id": "WM1",
+    "problem_description": "Low segregation at source",
+    "sector": "Waste Management",
+    "solution_name": "Swachh Bharat Mission (Urban & Rural)",
+    "institution_name": "MoHUA",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "WM2",
+    "problem_description": "Landfill overuse",
+    "sector": "Waste Management",
+    "solution_name": "Material Recovery Facilities (MRFs)",
+    "institution_name": "Delhi Municipal Corporations (SDMC, NDMC, EDMC)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "WM3",
+    "problem_description": "Informal sector integration gaps",
+    "sector": "Waste Management",
+    "solution_name": "Waste-to-energy plants",
+    "institution_name": "Chintan",
+    "institution_type": "NGO"
+  },
+  {
+    "problem_id": "WM4",
+    "problem_description": "Plastic waste leakage",
+    "sector": "Waste Management",
+    "solution_name": "Waste Management Rules (2016)",
+    "institution_name": "Ramky Enviro",
+    "institution_type": "Company/Industry"
+  },
+  {
+    "problem_id": "O1",
+    "problem_description": "Digital divide",
+    "sector": "Other",
+    "solution_name": "Digital India",
+    "institution_name": "MeitY (Ministry of Electronics & IT)",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "O2",
+    "problem_description": "Data silos",
+    "sector": "Other",
+    "solution_name": "CSCs (Common Service Centres)",
+    "institution_name": "NITI Aayog",
+    "institution_type": "Government Department"
+  },
+  {
+    "problem_id": "O3",
+    "problem_description": "Climate adaptation",
+    "sector": "Other",
+    "solution_name": "India Stack (Aadhaar, UPI, AA)",
+    "institution_name": "IITs (data science)",
+    "institution_type": "University/Research"
+  },
+  {
+    "problem_id": "O4",
+    "problem_description": "Urban-rural inequality",
+    "sector": "Other",
+    "solution_name": "Aspirational Districts Programme",
+    "institution_name": "Centre for Policy Research (CPR)",
+    "institution_type": "NGO"
+  }
+]
