@@ -1,95 +1,191 @@
 const fs = require("fs");
 const path = require("path");
 
-const linksFile = path.join(__dirname, "../data/links.json");
-const solutionsFile = path.join(__dirname, "../data/solutions.json");
-const institutionsFile = path.join(__dirname, "../data/institutions.json");
+const institutionsFile = path.join(
+  __dirname,
+  "../data/institutions.json"
+);
+
+// Keywords that describe what each problem category generally needs
+const routingKeywords = {
+  "Water & Sanitation": [
+    "water",
+    "water quality",
+    "water resources",
+    "groundwater",
+    "hydrology",
+    "wastewater",
+    "irrigation",
+    "water treatment",
+    "environmental"
+  ],
+
+  "Roads & Transport": [
+    "transport",
+    "transportation",
+    "infrastructure",
+    "civil engineering",
+    "engineering",
+    "gis"
+  ],
+
+  "Healthcare": [
+    "healthcare",
+    "health",
+    "rural health",
+    "tribal health",
+    "public health",
+    "health systems",
+    "telemedicine"
+  ],
+
+  "Education": [
+    "education",
+    "social sciences",
+    "cse",
+    "computer science"
+  ],
+
+  "Environment": [
+    "environment",
+    "environmental",
+    "water resources",
+    "groundwater",
+    "watershed",
+    "climate",
+    "geology",
+    "solid waste"
+  ],
+
+  "Agriculture": [
+    "agriculture",
+    "irrigation",
+    "drip",
+    "rainwater harvesting",
+    "doba",
+    "soil-water",
+    "soil",
+    "water conservation",
+    "crop productivity",
+    "fpo",
+    "livelihoods"
+  ],
+
+  "Electricity": [
+    "energy",
+    "renewable energy",
+    "solar",
+    "engineering"
+  ],
+
+  "Public Safety": [
+    "engineering",
+    "computer science",
+    "ai",
+    "gis"
+  ],
+
+  "Waste Management": [
+    "solid waste",
+    "wastewater",
+    "environment",
+    "environmental",
+    "engineering"
+  ],
+
+  "Other": [
+    "engineering",
+    "computer science",
+    "environment"
+  ]
+};
+
+
+const normalise = (text) => {
+  return String(text || "")
+    .toLowerCase()
+    .replace(/[–—]/g, "-")
+    .trim();
+};
+
 
 const routeProblem = (category) => {
   try {
-    const links = JSON.parse(
-      fs.readFileSync(linksFile, "utf-8")
-    );
-
-    const solutions = JSON.parse(
-      fs.readFileSync(solutionsFile, "utf-8")
-    );
-
     const institutions = JSON.parse(
       fs.readFileSync(institutionsFile, "utf-8")
     );
 
-    // Find links matching the AI-generated category
-    const matchingLinks = links.filter(
-      (link) =>
-        link.domain.toLowerCase() === category.toLowerCase()
-    );
+    const requiredKeywords =
+      routingKeywords[category] || routingKeywords["Other"];
 
-    // If no direct links exist, use expertise-based fallback
-    if (matchingLinks.length === 0) {
+    let bestInstitution = null;
+    let bestScore = 0;
+    let bestMatches = [];
+
+    institutions.forEach((institution) => {
+
+      // Real data has "Expertise keywords" as a STRING
+      const expertiseText = normalise(
+        institution["Expertise keywords"]
+      );
+
+      const matches = requiredKeywords.filter((keyword) =>
+        expertiseText.includes(normalise(keyword))
+      );
+
+      if (matches.length > bestScore) {
+        bestScore = matches.length;
+        bestInstitution = institution;
+        bestMatches = matches;
+      }
+    });
+
+
+    if (!bestInstitution) {
       return {
+        institutionId: null,
+        institution: null,
         college: null,
-        solutions: [],
         reason:
-          "No directly linked solution was found for this category. Manual review required."
+          "No suitable institution was found. Manual review required."
       };
     }
 
-    // Get recommended solutions
-    const recommendedSolutions = matchingLinks
-      .map((link) => {
-        const solution = solutions.find(
-          (item) => item.solution_id === link.solution_id
-        );
-
-        if (!solution) return null;
-
-        return {
-          id: solution.solution_id,
-          title: solution.title,
-          description: solution.description,
-          transferability: solution.transferability
-        };
-      })
-      .filter(Boolean);
-
-    // Pick the institution from the strongest matching link
-    const bestLink = matchingLinks[0];
-
-    const institution = institutions.find(
-      (item) => item.institution_id === bestLink.institution_id
-    );
-
-    if (!institution) {
-      return {
-        college: null,
-        solutions: recommendedSolutions,
-        reason:
-          "A relevant solution was found, but no matching institution was found."
-      };
-    }
 
     const reason =
-      `Recommended because ${institution.name} has relevant expertise ` +
-      `for ${category} and is associated with an existing solution ` +
-      `that addresses this type of problem.`;
+      `Selected because ${bestInstitution["Institution"]} ` +
+      `has relevant expertise in ${bestMatches.join(", ")} ` +
+      `and is located in ${bestInstitution["District"]}.`;
+
 
     return {
-      college: institution.name,
-      solutions: recommendedSolutions,
+      institutionId: bestInstitution["ID"],
+      institution: bestInstitution["Institution"],
+
+      // Keep "college" so the rest of your existing backend
+      // does not immediately break.
+      college: bestInstitution["Institution"],
+
       reason
     };
 
   } catch (error) {
-    console.error("Routing error:", error.message);
+
+    console.error(
+      "Routing error:",
+      error.message
+    );
 
     return {
+      institutionId: null,
+      institution: null,
       college: null,
-      solutions: [],
-      reason: "Routing failed. Manual review required."
+      reason:
+        "Routing failed. Manual review required."
     };
   }
 };
+
 
 module.exports = {
   routeProblem

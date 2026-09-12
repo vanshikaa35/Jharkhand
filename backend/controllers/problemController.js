@@ -110,12 +110,15 @@ const createProblem = async (req, res) => {
                 description,
                 location
             );
+            console.log("STEP 1: AI analysis completed");
+            console.log("AI CATEGORY:", aiResult.category);
 
 
         // --------------------------------
         // DUPLICATE CHECK
         // --------------------------------
 
+        console.log("DUPLICATE CHECK: starting");
         const duplicateResult =
             await checkDuplicate(
                 {
@@ -124,16 +127,20 @@ const createProblem = async (req, res) => {
                 },
                 existingProblems
             );
+        console.log("DUPLICATE CHECK: completed");
 
 
         // --------------------------------
         // COLLEGE ROUTING
         // --------------------------------
 
+        console.log("STEP 2: Starting institution routing");
         const routingResult =
             routeProblem(
                 aiResult.category
             );
+        console.log("STEP 3: Institution routing completed");
+        console.log("ROUTING RESULT:", routingResult);
 
 
         // --------------------------------
