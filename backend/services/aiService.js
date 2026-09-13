@@ -1,19 +1,28 @@
 const { execFile } = require("child_process");
 
+
+// ===============================
+// NVIDIA API CALL
+// ===============================
+
 const callNvidia = (prompt) => {
   return new Promise((resolve, reject) => {
+
     const body = JSON.stringify({
       model: "deepseek-ai/deepseek-v4-flash-0731",
+
       messages: [
         {
           role: "user",
           content: prompt
         }
       ],
+
       temperature: 0.2,
       max_tokens: 3000,
       stream: false
     });
+
 
     console.log(
       "NVIDIA KEY AVAILABLE:",
@@ -23,67 +32,133 @@ const callNvidia = (prompt) => {
         ? process.env.NVIDIA_API_KEY.length
         : 0
     );
+
+
     execFile(
       "curl.exe",
+
       [
         "https://integrate.api.nvidia.com/v1/chat/completions",
-        "-H", "Content-Type: application/json",
-        "-H", `Authorization: Bearer ${process.env.NVIDIA_API_KEY}`,
-        "--data-binary", body,
-        "--connect-timeout","10",
-        "--max-time", "30"
+
+        "-H",
+        "Content-Type: application/json",
+
+        "-H",
+        `Authorization: Bearer ${process.env.NVIDIA_API_KEY}`,
+
+        "--data-binary",
+        body,
+
+        "--connect-timeout",
+        "10",
+
+        "--max-time",
+        "30"
       ],
-      { maxBuffer: 1024 * 1024 },
+
+      {
+        maxBuffer: 1024 * 1024
+      },
+
       (error, stdout, stderr) => {
+
+        // ===============================
+        // CURL ERROR
+        // ===============================
+
         if (error) {
-          console.error("NVIDIA CURL ERROR:", error.message);
-          console.error("NVIDIA CURL STDERR:", stderr);
+
+          console.error(
+            "NVIDIA CURL ERROR:",
+            error.message
+          );
+
+          console.error(
+            "NVIDIA CURL STDERR:",
+            stderr
+          );
+
           reject(error);
           return;
         }
 
+
+        // ===============================
+        // PARSE NVIDIA RESPONSE
+        // ===============================
+
         try {
+
           const data = JSON.parse(stdout);
+
 
           console.log(
             "NVIDIA RAW RESPONSE:",
             JSON.stringify(data, null, 2)
           );
 
+
+          // NVIDIA API returned an error
           if (data.error) {
+
             reject(
               new Error(
-                `NVIDIA API error: ${data.error.message || JSON.stringify(data.error)}`
+                `NVIDIA API error: ${
+                  data.error.message ||
+                  JSON.stringify(data.error)
+                }`
               )
             );
+
             return;
           }
 
-          if (!data.choices || !data.choices[0]) {
+
+          // No choices returned
+          if (
+            !data.choices ||
+            !data.choices[0]
+          ) {
+
             reject(
               new Error(
                 "NVIDIA response did not contain choices."
               )
             );
+
             return;
           }
+
 
           resolve(data);
 
         } catch (err) {
+
           reject(
             new Error(
               `Invalid NVIDIA response: ${stdout}`
             )
           );
+
         }
+
       }
     );
+
   });
 };
 
 
-const analyseProblem = async (description, location) => {
+
+// ===============================
+// ANALYSE PROBLEM
+// ===============================
+
+const analyseProblem = async (
+  description,
+  location
+) => {
+
 
   const prompt = `
   You are an AI assistant for a government citizen-problem
@@ -221,56 +296,388 @@ const analyseProblem = async (description, location) => {
   confidence must be a number between 0 and 1.
   `;
 
+
+  // ===============================
+  // CALL AI
+  // ===============================
+
   try {
 
-    console.log("Calling NVIDIA API...");
+    console.log(
+      "Calling NVIDIA API..."
+    );
 
-    const response = await callNvidia(prompt);
 
-    console.log("NVIDIA API responded!");
+    const response =
+      await callNvidia(prompt);
 
-    const content = response.choices[0].message.content;
+
+    console.log(
+      "NVIDIA API responded!"
+    );
+
+
+    const content =
+      response.choices[0].message.content;
+
 
     if (!content) {
-      throw new Error("NVIDIA returned empty message content.");
+
+      throw new Error(
+        "NVIDIA returned empty message content."
+      );
+
     }
 
-    let cleanedContent = content.trim();
 
-    if (cleanedContent.startsWith("```")) {
-      cleanedContent = cleanedContent
-        .replace(/^```json\s*/i, "")
-        .replace(/^```\s*/i, "")
-        .replace(/\s*```$/i, "")
-        .trim();
+    console.log(
+      "AI RAW CONTENT:",
+      content
+    );
+
+
+    // ===============================
+    // CLEAN JSON RESPONSE
+    // ===============================
+
+    let cleanedContent =
+      content.trim();
+
+
+    if (
+      cleanedContent.startsWith("```")
+    ) {
+
+      cleanedContent =
+        cleanedContent
+          .replace(
+            /^```json\s*/i,
+            ""
+          )
+          .replace(
+            /^```\s*/i,
+            ""
+          )
+          .replace(
+            /\s*```$/i,
+            ""
+          )
+          .trim();
+
     }
 
-    const result = JSON.parse(cleanedContent);
+
+    // ===============================
+    // PARSE JSON
+    // ===============================
+
+    const result =
+      JSON.parse(cleanedContent);
+
+
+    // ===============================
+    // VALIDATE RESULT
+    // ===============================
+
+    const validCategories = [
+      "Water",
+      "Agriculture",
+      "Healthcare",
+      "Education",
+      "Environment",
+      "Roads & Transport",
+      "Electricity",
+      "Public Safety",
+      "Waste Management",
+      "Other"
+    ];
+
 
     if (
       !result.category ||
-      typeof result.confidence !== "number"
+      !validCategories.includes(
+        result.category
+      )
     ) {
-      throw new Error("Invalid AI classification format.");
+
+      throw new Error(
+        "AI returned an invalid category."
+      );
+
     }
 
-    return result;
+
+    if (
+      typeof result.confidence !==
+      "number"
+    ) {
+
+      throw new Error(
+        "AI returned invalid confidence."
+      );
+
+    }
+
 
     return result;
 
   } catch (error) {
 
-    console.error("AI ANALYSIS ERROR:", error);
+    // ===============================
+    // NVIDIA FALLBACK
+    // ===============================
+
+    console.error(
+      "AI ANALYSIS ERROR:",
+      error.message
+    );
+
+
+    const text =
+      `${description} ${location}`
+        .toLowerCase();
+
+
+    // ===============================
+    // KEYWORDS
+    // ===============================
+
+    const agricultureKeywords = [
+      "farmer",
+      "farmers",
+      "farming",
+      "crop",
+      "crops",
+      "cultivation",
+      "vegetable",
+      "vegetables",
+      "irrigation",
+      "agriculture",
+      "agricultural",
+      "field",
+      "fields",
+      "harvest",
+      "soil",
+      "livestock",
+      "fpo",
+      "drought"
+    ];
+
+
+    const waterKeywords = [
+      "drinking water",
+      "potable water",
+      "tap water",
+      "handpump",
+      "water supply",
+      "water quality",
+      "contaminated water",
+      "unsafe water",
+      "groundwater quality"
+    ];
+
+
+    const healthcareKeywords = [
+      "hospital",
+      "doctor",
+      "medicine",
+      "phc",
+      "healthcare",
+      "health",
+      "telemedicine"
+    ];
+
+
+    const educationKeywords = [
+      "school",
+      "teacher",
+      "student",
+      "classroom",
+      "education"
+    ];
+
+
+    // ===============================
+    // MATCH KEYWORDS
+    // ===============================
+
+    const agricultureMatch =
+      agricultureKeywords.some(
+        (keyword) =>
+          text.includes(keyword)
+      );
+
+
+    const waterMatch =
+      waterKeywords.some(
+        (keyword) =>
+          text.includes(keyword)
+      );
+
+
+    const healthcareMatch =
+      healthcareKeywords.some(
+        (keyword) =>
+          text.includes(keyword)
+      );
+
+
+    const educationMatch =
+      educationKeywords.some(
+        (keyword) =>
+          text.includes(keyword)
+      );
+
+
+    // ===============================
+    // AGRICULTURE FALLBACK
+    // ===============================
+
+    if (
+      agricultureMatch &&
+      !waterMatch
+    ) {
+
+      console.log(
+        "LOCAL FALLBACK: Agriculture"
+      );
+
+
+      return {
+        category: "Agriculture",
+
+        summary:
+          description.substring(
+            0,
+            100
+          ),
+
+        confidence: 0.85,
+
+        reason:
+          "NVIDIA AI was unavailable, so the complaint was classified using local category rules."
+      };
+
+    }
+
+
+    // ===============================
+    // WATER FALLBACK
+    // ===============================
+
+    if (
+      waterMatch &&
+      !agricultureMatch
+    ) {
+
+      console.log(
+        "LOCAL FALLBACK: Water"
+      );
+
+
+      return {
+        category: "Water",
+
+        summary:
+          description.substring(
+            0,
+            100
+          ),
+
+        confidence: 0.85,
+
+        reason:
+          "NVIDIA AI was unavailable, so the complaint was classified using local category rules."
+      };
+
+    }
+
+
+    // ===============================
+    // HEALTHCARE FALLBACK
+    // ===============================
+
+    if (healthcareMatch) {
+
+      console.log(
+        "LOCAL FALLBACK: Healthcare"
+      );
+
+
+      return {
+        category: "Healthcare",
+
+        summary:
+          description.substring(
+            0,
+            100
+          ),
+
+        confidence: 0.85,
+
+        reason:
+          "NVIDIA AI was unavailable, so the complaint was classified using local category rules."
+      };
+
+    }
+
+
+    // ===============================
+    // EDUCATION FALLBACK
+    // ===============================
+
+    if (educationMatch) {
+
+      console.log(
+        "LOCAL FALLBACK: Education"
+      );
+
+
+      return {
+        category: "Education",
+
+        summary:
+          description.substring(
+            0,
+            100
+          ),
+
+        confidence: 0.85,
+
+        reason:
+          "NVIDIA AI was unavailable, so the complaint was classified using local category rules."
+      };
+
+    }
+
+
+    // ===============================
+    // FINAL FALLBACK
+    // ===============================
 
     return {
       category: "Other",
-      summary: description.substring(0, 100),
+
+      summary:
+        description.substring(
+          0,
+          100
+        ),
+
       confidence: 0.2,
-      reason: "The AI could not confidently classify this problem."
+
+      reason:
+        "The AI service was unavailable and no local category rule matched the complaint."
     };
+
   }
+
 };
 
+
+// ===============================
+// EXPORT
+// ===============================
 
 module.exports = {
   analyseProblem

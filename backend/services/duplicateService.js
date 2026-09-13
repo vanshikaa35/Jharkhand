@@ -1,33 +1,110 @@
 const OpenAI = require("openai");
 
-const DUPLICATE_TIMEOUT = 15000;
+
+// =====================================
+// NVIDIA CLIENT
+// =====================================
 
 const client = new OpenAI({
-    baseURL: "https://integrate.api.nvidia.com/v1",
-    apiKey: process.env.NVIDIA_API_KEY
+  baseURL: "https://integrate.api.nvidia.com/v1",
+  apiKey: process.env.NVIDIA_API_KEY
 });
 
-const checkDuplicate = async (newProblem, existingProblems) => {
 
-    // No existing complaints
-    if (!existingProblems || existingProblems.length === 0) {
-        return {
-            duplicateFound: false,
-            duplicateOf: null,
-            confidence: 0
-        };
+// =====================================
+// DUPLICATE TIMEOUT
+// =====================================
+
+const DUPLICATE_TIMEOUT = 10000;
+
+
+// =====================================
+// NORMALIZE TEXT
+// =====================================
+
+const normalizeText = (text) => {
+  return String(text || "")
+    .toLowerCase()
+    .replace(/[^\w\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+};
+
+
+// =====================================
+// LOCAL DUPLICATE CHECK
+// =====================================
+
+const localDuplicateCheck = (
+  newProblem,
+  existingProblems
+) => {
+
+  const newDescription =
+    normalizeText(newProblem.description);
+
+  const newLocation =
+    normalizeText(newProblem.location);
+
+
+  for (const problem of existingProblems) {
+
+    const oldDescription =
+      normalizeText(problem.description);
+
+    const oldLocation =
+      normalizeText(problem.location);
+
+
+    // Exact same complaint + location
+    if (
+      newDescription === oldDescription &&
+      newLocation === oldLocation
+    ) {
+
+      return {
+        duplicateFound: true,
+        duplicateOf: problem.id,
+        confidence: 1
+      };
+
     }
 
-    const complaints = existingProblems.map((problem, index) => ({
+  }
+
+
+  return {
+    duplicateFound: false,
+    duplicateOf: null,
+    confidence: 0
+  };
+
+};
+
+
+// =====================================
+// AI DUPLICATE CHECK
+// =====================================
+
+const aiDuplicateCheck = async (
+  newProblem,
+  existingProblems
+) => {
+
+  const complaints =
+    existingProblems.map(
+      (problem, index) => ({
         index,
         id: problem.id,
         description: problem.description,
         location: problem.location
-    }));
+      })
+    );
 
-    const prompt = `
+
+  const prompt = `
 You are checking whether a new citizen complaint
-refers to the same real-world problem as an existing complaint.
+is a duplicate of an existing complaint.
 
 NEW COMPLAINT:
 ${newProblem.description}
@@ -38,19 +115,19 @@ ${newProblem.location}
 EXISTING COMPLAINTS:
 ${JSON.stringify(complaints)}
 
-Consider a complaint a duplicate ONLY when:
+A complaint is a duplicate only when it describes
+essentially the same problem in the same or very
+similar location.
 
-1. It refers to the same underlying problem.
-2. It is from approximately the same location.
-3. Do NOT mark complaints as duplicates merely because
-   they belong to the same category.
-4. If uncertain, return duplicateFound as false.
+Return ONLY valid JSON:
 
-Return ONLY valid JSON.
-Do not use markdown.
-Do not include explanations.
+{
+  "duplicateFound": true,
+  "duplicateIndex": 0,
+  "confidence": 0.0
+}
 
-Required format:
+OR:
 
 {
   "duplicateFound": false,
@@ -58,116 +135,256 @@ Required format:
   "confidence": 0.0
 }
 
-OR:
-
-{
-  "duplicateFound": true,
-  "duplicateIndex": 0,
-  "confidence": 0.0
-}
+confidence must be between 0 and 1.
 `;
 
-    try {
 
-        const response = await Promise.race([
+  try {
 
-            client.chat.completions.create({
-                model: "deepseek-ai/deepseek-v4-flash-0731",
-                messages: [
-                    {
-                        role: "user",
-                        content: prompt
-                    }
-                ],
-                temperature: 0.1,
-                max_tokens: 200,
-                stream: false
-            }),
+    const response =
+      await Promise.race([
 
-            new Promise((_, reject) =>
-                setTimeout(
-                    () => reject(
-                        new Error("Duplicate detection timed out.")
-                    ),
-                    DUPLICATE_TIMEOUT
-                )
-            )
-        ]);
+        client.chat.completions.create({
 
-        const rawContent =
-            response?.choices?.[0]?.message?.content;
+          model:
+            "deepseek-ai/deepseek-v4-flash-0731",
 
-        if (!rawContent) {
-            throw new Error("Empty duplicate detection response.");
-        }
+          messages: [
+            {
+              role: "user",
+              content: prompt
+            }
+          ],
 
-        console.log("DUPLICATE RAW RESPONSE:", rawContent);
+          temperature: 0.1,
 
-        // Remove accidental markdown code fences
-        const cleanedContent = rawContent
-            .replace(/```json/gi, "")
-            .replace(/```/g, "")
-            .trim();
+          max_tokens: 100,
 
-        const result = JSON.parse(cleanedContent);
+          stream: false
 
-        if (!result || typeof result !== "object") {
-            throw new Error("Invalid duplicate detection response.");
-        }
+        }),
 
-        const confidence =
-            typeof result.confidence === "number"
-                ? result.confidence
-                : 0;
+        new Promise((_, reject) => {
 
-        const duplicateIndex =
-            Number.isInteger(result.duplicateIndex)
-                ? result.duplicateIndex
-                : null;
+          setTimeout(() => {
 
-        // Accept duplicate only with >= 75% confidence
-        if (
-            result.duplicateFound === true &&
-            duplicateIndex !== null &&
-            duplicateIndex >= 0 &&
-            duplicateIndex < existingProblems.length &&
-            confidence >= 0.75
-        ) {
+            reject(
+              new Error(
+                "Duplicate detection timed out."
+              )
+            );
 
-            const duplicate =
-                existingProblems[duplicateIndex];
+          }, DUPLICATE_TIMEOUT);
 
-            return {
-                duplicateFound: true,
-                duplicateOf: duplicate.id,
-                confidence
-            };
-        }
+        })
 
-        return {
-            duplicateFound: false,
-            duplicateOf: null,
-            confidence
-        };
+      ]);
 
-    } catch (error) {
 
-        console.error(
-            "Duplicate detection error:",
-            error.message
+    const content =
+      response?.choices?.[0]?.message?.content;
+
+
+    if (!content) {
+
+      throw new Error(
+        "Empty duplicate detection response."
+      );
+
+    }
+
+
+    console.log(
+      "DUPLICATE RAW RESPONSE:",
+      content
+    );
+
+
+    let cleaned =
+      content.trim();
+
+
+    if (
+      cleaned.startsWith("```")
+    ) {
+
+      cleaned =
+        cleaned
+          .replace(
+            /^```json\s*/i,
+            ""
+          )
+          .replace(
+            /^```\s*/i,
+            ""
+          )
+          .replace(
+            /\s*```$/i,
+            ""
+          )
+          .trim();
+
+    }
+
+
+    const result =
+      JSON.parse(cleaned);
+
+
+    // Validate response
+
+    if (
+      typeof result.duplicateFound !==
+      "boolean"
+    ) {
+
+      throw new Error(
+        "Invalid duplicateFound value."
+      );
+
+    }
+
+
+    if (
+      typeof result.confidence !==
+      "number"
+    ) {
+
+      throw new Error(
+        "Invalid duplicate confidence."
+      );
+
+    }
+
+
+    // If AI found duplicate
+
+    if (
+      result.duplicateFound === true &&
+      Number.isInteger(
+        result.duplicateIndex
+      ) &&
+      result.confidence >= 0.75
+    ) {
+
+      const duplicate =
+        existingProblems[
+          result.duplicateIndex
+        ];
+
+
+      if (!duplicate) {
+
+        throw new Error(
+          "Duplicate index does not exist."
         );
 
-        // Safe fallback:
-        // never block complaint submission because
-        // duplicate detection failed.
-        return {
-            duplicateFound: false,
-            duplicateOf: null,
-            confidence: 0
-        };
+      }
+
+
+      return {
+        duplicateFound: true,
+        duplicateOf: duplicate.id,
+        confidence: result.confidence
+      };
+
     }
+
+
+    // No reliable duplicate
+
+    return {
+      duplicateFound: false,
+      duplicateOf: null,
+      confidence:
+        result.confidence
+    };
+
+  } catch (error) {
+
+    console.error(
+      "Duplicate detection error:",
+      error.message
+    );
+
+
+    // VERY IMPORTANT:
+    // Duplicate detection failure
+    // must never block submission.
+
+    return {
+      duplicateFound: false,
+      duplicateOf: null,
+      confidence: 0
+    };
+
+  }
+
 };
 
+
+// =====================================
+// MAIN DUPLICATE FUNCTION
+// =====================================
+
+const checkDuplicate = async (
+  newProblem,
+  existingProblems
+) => {
+
+  // No existing problems
+  if (
+    !existingProblems ||
+    existingProblems.length === 0
+  ) {
+
+    return {
+      duplicateFound: false,
+      duplicateOf: null,
+      confidence: 0
+    };
+
+  }
+
+
+  // ===================================
+  // STEP 1: LOCAL EXACT MATCH
+  // ===================================
+
+  const localResult =
+    localDuplicateCheck(
+      newProblem,
+      existingProblems
+    );
+
+
+  if (
+    localResult.duplicateFound
+  ) {
+
+    console.log(
+      "LOCAL DUPLICATE FOUND:",
+      localResult.duplicateOf
+    );
+
+
+    return localResult;
+
+  }
+
+
+  // ===================================
+  // STEP 2: AI CHECK
+  // ===================================
+
+  return await aiDuplicateCheck(
+    newProblem,
+    existingProblems
+  );
+
+};
+
+
 module.exports = {
-    checkDuplicate
+  checkDuplicate
 };

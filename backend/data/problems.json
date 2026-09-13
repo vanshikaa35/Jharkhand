@@ -319,7 +319,7 @@
     "confidence": 0.2,
     "duplicateFound": false,
     "duplicateOf": null,
-    "duplicateCount": 0,
+    "duplicateCount": 1,
     "assignedCollege": null,
     "recommendedSolutions": [],
     "routingReason": "AI confidence is below the required threshold. Manual review required.",
@@ -404,5 +404,267 @@
     "humanReview": true,
     "status": "under_review",
     "createdAt": "2026-09-13T16:48:15.044Z"
+  },
+  {
+    "id": "1789322331224",
+    "description": "Farmers don't have enough irrigation water for vegetable cultivation.",
+    "location": "Ranchi, Jharkhand",
+    "imageUrl": null,
+    "category": "Agriculture",
+    "summary": "农民缺乏用于蔬菜种植的灌溉水",
+    "confidence": 1,
+    "duplicateFound": false,
+    "duplicateOf": null,
+    "duplicateCount": 0,
+    "assignedCollege": "Birsa Agricultural University (BAU)",
+    "recommendedSolutions": [
+      {
+        "ID": "S002",
+        "Problem title": "Irrigation shortage for small farmers",
+        "Domain": "Agriculture",
+        "Solution title": "Micro drip irrigation (MDI) for vegetable cultivation",
+        "Where implemented": "Kanke & Ratu blocks, Ranchi district, Jharkhand",
+        "Implementer": "Birsa Agricultural University; JSLPS (JHIMDI / I-HIMDI project, JICA-funded)",
+        "Outcome (short, verified)": "Study of 200 farmers: cucumber & tomato most profitable under MDI; high post-harvest losses in tomato (~59%); water savings & higher productivity vs conventional irrigation reported in related BAU trials",
+        "Transferability": "High",
+        "Source": [
+          "https://krishikosh.egranth.ac.in/items/29a5240f-470b-4379-b586-198598f4a03e",
+          "https://www.academia.edu/90705990/Economics_of_Growing_Okra_under_Drip_Fertigation"
+        ]
+      },
+      {
+        "ID": "S005",
+        "Problem title": "Low productivity in rainfed areas",
+        "Domain": "Agriculture",
+        "Solution title": "Small rainwater harvesting ponds (doba) with supplemental irrigation",
+        "Where implemented": "Multiple rainfed villages, Jharkhand",
+        "Implementer": "Birsa Agricultural University + project partners",
+        "Outcome (short, verified)": "Documented increase in paddy yields from ~900 kg/acre to ~1,700 kg/acre in program villages; improved winter vegetable cultivation",
+        "Transferability": "High",
+        "Source": [
+          "https://news.climate.columbia.edu/2017/05/24/in-jharkhand-using-an-old-technique-for-sustainable-water/"
+        ]
+      },
+      {
+        "ID": "S009",
+        "Problem title": "Vegetable wastage & low income",
+        "Domain": "Agriculture",
+        "Solution title": "Solar dryers & cold storage for horticulture FPOs (JH-RESET)",
+        "Where implemented": "Coal-mining districts (e.g., Chatra, Koderma, Dhanbad belt)",
+        "Implementer": "State Horticulture Dept, JREDA, FPOs; funds from DMFT, SCF, ADP",
+        "Outcome (short, verified)": "20% reduction in food waste; ~30% increase in farmer wages in pilot; monthly income ↑ ₹3,000–4,000 per dryer; overall annual income increase for ~200 tomato farmers",
+        "Transferability": "Medium–High",
+        "Source": [
+          "https://thebetterindia.com/477315/jh-reset-inside-jharkhands-solar-powered-rural-economy-strategy/",
+          "https://climate.swaniti.com/home/programs/jharkhand/"
+        ]
+      }
+    ],
+    "routingReason": "Selected because Birsa Agricultural University (BAU) has relevant expertise in irrigation, drip, rainwater harvesting, doba, soil, water conservation and is located in Ranchi.",
+    "humanReview": false,
+    "status": "assigned",
+    "createdAt": "2026-09-13T17:58:51.224Z"
+  },
+  {
+    "id": "1789322522004",
+    "description": "Farmers don't have enough irrigation water for vegetable cultivation.",
+    "location": "Ranchi, Jharkhand",
+    "imageUrl": null,
+    "category": "Other",
+    "summary": "Farmers don't have enough irrigation water for vegetable cultivation.",
+    "confidence": 0.2,
+    "duplicateFound": false,
+    "duplicateOf": null,
+    "duplicateCount": 0,
+    "assignedCollege": null,
+    "recommendedSolutions": [],
+    "routingReason": "AI confidence is below the required threshold. Manual review required.",
+    "humanReview": true,
+    "status": "under_review",
+    "createdAt": "2026-09-13T18:02:02.004Z"
+  },
+  {
+    "id": "1789322984812",
+    "description": "Farmers don't have enough irrigation water for vegetable cultivation.",
+    "location": "Ranchi, Jharkhand",
+    "imageUrl": null,
+    "category": "Other",
+    "summary": "Farmers don't have enough irrigation water for vegetable cultivation.",
+    "confidence": 0.2,
+    "duplicateFound": false,
+    "duplicateOf": null,
+    "duplicateCount": 0,
+    "assignedCollege": null,
+    "recommendedSolutions": [],
+    "routingReason": "AI confidence is below the required threshold. Manual review required.",
+    "humanReview": true,
+    "status": "under_review",
+    "createdAt": "2026-09-13T18:09:44.812Z"
+  },
+  {
+    "id": "1789323608397",
+    "description": "Farmers don't have enough irrigation water for vegetable cultivation.",
+    "location": "Ranchi, Jharkhand",
+    "imageUrl": null,
+    "category": "Agriculture",
+    "summary": "农民缺乏用于蔬菜种植的灌溉水",
+    "confidence": 1,
+    "duplicateFound": false,
+    "duplicateOf": null,
+    "duplicateCount": 0,
+    "assignedCollege": "Birsa Agricultural University (BAU)",
+    "recommendedSolutions": [
+      {
+        "ID": "S002",
+        "Problem title": "Irrigation shortage for small farmers",
+        "Domain": "Agriculture",
+        "Solution title": "Micro drip irrigation (MDI) for vegetable cultivation",
+        "Where implemented": "Kanke & Ratu blocks, Ranchi district, Jharkhand",
+        "Implementer": "Birsa Agricultural University; JSLPS (JHIMDI / I-HIMDI project, JICA-funded)",
+        "Outcome (short, verified)": "Study of 200 farmers: cucumber & tomato most profitable under MDI; high post-harvest losses in tomato (~59%); water savings & higher productivity vs conventional irrigation reported in related BAU trials",
+        "Transferability": "High",
+        "Source": [
+          "https://krishikosh.egranth.ac.in/items/29a5240f-470b-4379-b586-198598f4a03e",
+          "https://www.academia.edu/90705990/Economics_of_Growing_Okra_under_Drip_Fertigation"
+        ]
+      },
+      {
+        "ID": "S005",
+        "Problem title": "Low productivity in rainfed areas",
+        "Domain": "Agriculture",
+        "Solution title": "Small rainwater harvesting ponds (doba) with supplemental irrigation",
+        "Where implemented": "Multiple rainfed villages, Jharkhand",
+        "Implementer": "Birsa Agricultural University + project partners",
+        "Outcome (short, verified)": "Documented increase in paddy yields from ~900 kg/acre to ~1,700 kg/acre in program villages; improved winter vegetable cultivation",
+        "Transferability": "High",
+        "Source": [
+          "https://news.climate.columbia.edu/2017/05/24/in-jharkhand-using-an-old-technique-for-sustainable-water/"
+        ]
+      },
+      {
+        "ID": "S009",
+        "Problem title": "Vegetable wastage & low income",
+        "Domain": "Agriculture",
+        "Solution title": "Solar dryers & cold storage for horticulture FPOs (JH-RESET)",
+        "Where implemented": "Coal-mining districts (e.g., Chatra, Koderma, Dhanbad belt)",
+        "Implementer": "State Horticulture Dept, JREDA, FPOs; funds from DMFT, SCF, ADP",
+        "Outcome (short, verified)": "20% reduction in food waste; ~30% increase in farmer wages in pilot; monthly income ↑ ₹3,000–4,000 per dryer; overall annual income increase for ~200 tomato farmers",
+        "Transferability": "Medium–High",
+        "Source": [
+          "https://thebetterindia.com/477315/jh-reset-inside-jharkhands-solar-powered-rural-economy-strategy/",
+          "https://climate.swaniti.com/home/programs/jharkhand/"
+        ]
+      }
+    ],
+    "routingReason": "Selected because Birsa Agricultural University (BAU) has relevant expertise in irrigation, drip, rainwater harvesting, doba, soil, water conservation and is located in Ranchi.",
+    "humanReview": false,
+    "status": "assigned",
+    "createdAt": "2026-09-13T18:20:08.397Z"
+  },
+  {
+    "id": "1789324139346",
+    "description": "Farmers don't have enough irrigation water for vegetable cultivation.",
+    "location": "Ranchi, Jharkhand",
+    "imageUrl": null,
+    "category": "Agriculture",
+    "summary": "农民缺乏用于蔬菜种植的灌溉水",
+    "confidence": 1,
+    "duplicateFound": true,
+    "duplicateOf": "1789317250619",
+    "duplicateCount": 0,
+    "assignedCollege": "Birsa Agricultural University (BAU)",
+    "recommendedSolutions": [
+      {
+        "ID": "S002",
+        "Problem title": "Irrigation shortage for small farmers",
+        "Domain": "Agriculture",
+        "Solution title": "Micro drip irrigation (MDI) for vegetable cultivation",
+        "Where implemented": "Kanke & Ratu blocks, Ranchi district, Jharkhand",
+        "Implementer": "Birsa Agricultural University; JSLPS (JHIMDI / I-HIMDI project, JICA-funded)",
+        "Outcome (short, verified)": "Study of 200 farmers: cucumber & tomato most profitable under MDI; high post-harvest losses in tomato (~59%); water savings & higher productivity vs conventional irrigation reported in related BAU trials",
+        "Transferability": "High",
+        "Source": [
+          "https://krishikosh.egranth.ac.in/items/29a5240f-470b-4379-b586-198598f4a03e",
+          "https://www.academia.edu/90705990/Economics_of_Growing_Okra_under_Drip_Fertigation"
+        ]
+      },
+      {
+        "ID": "S005",
+        "Problem title": "Low productivity in rainfed areas",
+        "Domain": "Agriculture",
+        "Solution title": "Small rainwater harvesting ponds (doba) with supplemental irrigation",
+        "Where implemented": "Multiple rainfed villages, Jharkhand",
+        "Implementer": "Birsa Agricultural University + project partners",
+        "Outcome (short, verified)": "Documented increase in paddy yields from ~900 kg/acre to ~1,700 kg/acre in program villages; improved winter vegetable cultivation",
+        "Transferability": "High",
+        "Source": [
+          "https://news.climate.columbia.edu/2017/05/24/in-jharkhand-using-an-old-technique-for-sustainable-water/"
+        ]
+      },
+      {
+        "ID": "S009",
+        "Problem title": "Vegetable wastage & low income",
+        "Domain": "Agriculture",
+        "Solution title": "Solar dryers & cold storage for horticulture FPOs (JH-RESET)",
+        "Where implemented": "Coal-mining districts (e.g., Chatra, Koderma, Dhanbad belt)",
+        "Implementer": "State Horticulture Dept, JREDA, FPOs; funds from DMFT, SCF, ADP",
+        "Outcome (short, verified)": "20% reduction in food waste; ~30% increase in farmer wages in pilot; monthly income ↑ ₹3,000–4,000 per dryer; overall annual income increase for ~200 tomato farmers",
+        "Transferability": "Medium–High",
+        "Source": [
+          "https://thebetterindia.com/477315/jh-reset-inside-jharkhands-solar-powered-rural-economy-strategy/",
+          "https://climate.swaniti.com/home/programs/jharkhand/"
+        ]
+      }
+    ],
+    "routingReason": "Selected because Birsa Agricultural University (BAU) has relevant expertise in irrigation, drip, rainwater harvesting, doba, soil, water conservation and is located in Ranchi.",
+    "humanReview": false,
+    "status": "assigned",
+    "createdAt": "2026-09-13T18:28:59.346Z"
+  },
+  {
+    "id": "1789324291323",
+    "description": "Farmers in Ranchi are facing severe soil degradation and declining crop productivity.",
+    "location": "Ranchi, Jharkhand",
+    "imageUrl": null,
+    "category": "Agriculture",
+    "summary": "Farmers in Ranchi are facing severe soil degradation and declining crop productivity.",
+    "confidence": 0.85,
+    "duplicateFound": false,
+    "duplicateOf": null,
+    "duplicateCount": 0,
+    "assignedCollege": "Birsa Agricultural University (BAU)",
+    "recommendedSolutions": [
+      {
+        "ID": "S002",
+        "Problem title": "Irrigation shortage for small farmers",
+        "Domain": "Agriculture",
+        "Solution title": "Micro drip irrigation (MDI) for vegetable cultivation",
+        "Where implemented": "Kanke & Ratu blocks, Ranchi district, Jharkhand",
+        "Implementer": "Birsa Agricultural University; JSLPS (JHIMDI / I-HIMDI project, JICA-funded)",
+        "Outcome (short, verified)": "Study of 200 farmers: cucumber & tomato most profitable under MDI; high post-harvest losses in tomato (~59%); water savings & higher productivity vs conventional irrigation reported in related BAU trials",
+        "Transferability": "High",
+        "Source": [
+          "https://krishikosh.egranth.ac.in/items/29a5240f-470b-4379-b586-198598f4a03e",
+          "https://www.academia.edu/90705990/Economics_of_Growing_Okra_under_Drip_Fertigation"
+        ]
+      },
+      {
+        "ID": "S005",
+        "Problem title": "Low productivity in rainfed areas",
+        "Domain": "Agriculture",
+        "Solution title": "Small rainwater harvesting ponds (doba) with supplemental irrigation",
+        "Where implemented": "Multiple rainfed villages, Jharkhand",
+        "Implementer": "Birsa Agricultural University + project partners",
+        "Outcome (short, verified)": "Documented increase in paddy yields from ~900 kg/acre to ~1,700 kg/acre in program villages; improved winter vegetable cultivation",
+        "Transferability": "High",
+        "Source": [
+          "https://news.climate.columbia.edu/2017/05/24/in-jharkhand-using-an-old-technique-for-sustainable-water/"
+        ]
+      }
+    ],
+    "routingReason": "Selected because Birsa Agricultural University (BAU) has relevant expertise in irrigation, drip, rainwater harvesting, doba, soil, water conservation and is located in Ranchi.",
+    "humanReview": false,
+    "status": "assigned",
+    "createdAt": "2026-09-13T18:31:31.325Z"
   }
 ]
