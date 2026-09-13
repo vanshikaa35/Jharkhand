@@ -162,7 +162,8 @@ const createProblem = async (req, res) => {
             routingResult =
                 routeProblem(
                     aiResult.category,
-                    location
+                    location,
+                    description
                 );
 
             console.log(

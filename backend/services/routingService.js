@@ -2,194 +2,326 @@ const fs = require("fs");
 const path = require("path");
 
 const institutionsFile = path.join(
-  __dirname,
-  "../data/institutions.json"
+    __dirname,
+    "../data/institutions.json"
 );
 
-// Keywords that describe what each problem category generally needs
+const solutionsFile = path.join(
+    __dirname,
+    "../data/solutions.json"
+);
+
 const routingKeywords = {
-  "Water": [
-    "water",
-    "water quality",
-    "water resources",
-    "groundwater",
-    "hydrology",
-    "wastewater",
-    "irrigation",
-    "water treatment",
-    "environmental"
-  ],
+    Water: [
+        "water",
+        "drinking water",
+        "water quality",
+        "groundwater",
+        "wastewater",
+        "irrigation",
+        "water treatment",
+        "water conservation"
+    ],
 
-  "Roads & Transport": [
-    "transport",
-    "transportation",
-    "infrastructure",
-    "civil engineering",
-    "engineering",
-    "gis"
-  ],
+    "Roads & Transport": [
+        "transport",
+        "transportation",
+        "road",
+        "roads",
+        "traffic",
+        "congestion",
+        "infrastructure",
+        "engineering",
+        "gis"
+    ],
 
-  "Healthcare": [
-    "healthcare",
-    "health",
-    "rural health",
-    "tribal health",
-    "public health",
-    "health systems",
-    "telemedicine"
-  ],
+    Healthcare: [
+        "healthcare",
+        "health",
+        "hospital",
+        "doctor",
+        "medicine",
+        "telemedicine",
+        "specialist",
+        "primary care"
+    ],
 
-  "Education": [
-    "education",
-    "social sciences",
-    "cse",
-    "computer science"
-  ],
+    Education: [
+        "education",
+        "school",
+        "teacher",
+        "student",
+        "learning",
+        "digital education",
+        "computer science"
+    ],
 
-  "Environment": [
-    "environment",
-    "environmental",
-    "water resources",
-    "groundwater",
-    "watershed",
-    "climate",
-    "geology",
-    "solid waste"
-  ],
+    Environment: [
+        "environment",
+        "environmental",
+        "climate",
+        "air pollution",
+        "groundwater",
+        "watershed",
+        "solid waste",
+        "green cover"
+    ],
 
-  "Agriculture": [
-    "agriculture",
-    "irrigation",
-    "drip",
-    "rainwater harvesting",
-    "doba",
-    "soil-water",
-    "soil",
-    "water conservation",
-    "crop productivity",
-    "fpo",
-    "livelihoods"
-  ],
+    Agriculture: [
+        "agriculture",
+        "farmer",
+        "farmers",
+        "farming",
+        "irrigation",
+        "drip",
+        "rainwater harvesting",
+        "doba",
+        "soil",
+        "crop",
+        "vegetable",
+        "cultivation",
+        "water conservation",
+        "livelihoods",
+        "fpo"
+    ],
 
-  "Electricity": [
-    "energy",
-    "renewable energy",
-    "solar",
-    "engineering"
-  ],
+    Electricity: [
+        "electricity",
+        "energy",
+        "power",
+        "solar",
+        "renewable energy",
+        "smart meter"
+    ],
 
-  "Public Safety": [
-    "engineering",
-    "computer science",
-    "ai",
-    "gis"
-  ],
+    "Public Safety": [
+        "crime",
+        "safety",
+        "police",
+        "cybercrime",
+        "disaster",
+        "emergency",
+        "cctv"
+    ],
 
-  "Waste Management": [
-    "solid waste",
-    "wastewater",
-    "environment",
-    "environmental",
-    "engineering"
-  ],
+    "Waste Management": [
+        "waste",
+        "garbage",
+        "plastic",
+        "landfill",
+        "recycling",
+        "solid waste",
+        "wastewater"
+    ],
 
-  "Other": [
-    "engineering",
-    "computer science",
-    "environment"
-  ]
+    Other: [
+        "digital",
+        "data",
+        "technology",
+        "inequality",
+        "climate",
+        "environment"
+    ]
 };
-
 
 const normalise = (text) => {
-  return String(text || "")
-    .toLowerCase()
-    .replace(/[–—]/g, "-")
-    .trim();
+    return String(text || "")
+        .toLowerCase()
+        .replace(/[–—]/g, "-")
+        .trim();
 };
 
 
-const routeProblem = (category, location="") => {
-  try {
-    const institutions = JSON.parse(
-      fs.readFileSync(institutionsFile, "utf-8")
+/**
+ * Find solutions relevant to the AI category
+ * and complaint description.
+ */
+const findSolutions = (category, description = "") => {
+    try {
+        const solutions = JSON.parse(
+            fs.readFileSync(solutionsFile, "utf-8")
+        );
+
+        const normalizedDescription = normalise(description);
+
+        const categorySolutions = solutions.filter(
+            (solution) =>
+                normalise(solution.Domain) === normalise(category)
+        );
+
+        if (categorySolutions.length === 0) {
+            return [];
+        }
+
+        /*
+         * Score solutions based on how many words from the
+         * problem title / solution title appear in the complaint.
+         */
+        const scoredSolutions = categorySolutions.map((solution) => {
+            const searchableText = normalise(
+                `${solution["Problem title"]} ${solution["Solution title"]}`
+            );
+
+            const keywords = searchableText
+                .split(/[^a-z0-9]+/)
+                .filter((word) => word.length >= 4);
+
+            let score = 0;
+
+            keywords.forEach((keyword) => {
+                if (normalizedDescription.includes(keyword)) {
+                    score++;
+                }
+            });
+
+            return {
+                solution,
+                score
+            };
+        });
+
+        scoredSolutions.sort((a, b) => b.score - a.score);
+
+        /*
+         * Return the best 3 solutions.
+         * If nothing matches specifically, return up to 3
+         * solutions from the same category.
+         */
+        const matchedSolutions = scoredSolutions
+            .filter((item) => item.score > 0)
+            .slice(0, 3)
+            .map((item) => item.solution);
+
+        if (matchedSolutions.length > 0) {
+            return matchedSolutions;
+        }
+
+        return categorySolutions.slice(0, 3);
+
+    } catch (error) {
+        console.error(
+            "Solution routing error:",
+            error.message
+        );
+
+        return [];
+    }
+};
+
+
+/**
+ * Find the best institution from institutions.json
+ * using category expertise.
+ */
+const findInstitution = (category) => {
+    try {
+        const institutions = JSON.parse(
+            fs.readFileSync(institutionsFile, "utf-8")
+        );
+
+        const requiredKeywords =
+            routingKeywords[category] ||
+            routingKeywords["Other"];
+
+        let bestInstitution = null;
+        let bestScore = 0;
+        let bestMatches = [];
+
+        institutions.forEach((institution) => {
+            const expertiseText = normalise(
+                institution["Expertise keywords"]
+            );
+
+            const matches = requiredKeywords.filter((keyword) =>
+                expertiseText.includes(normalise(keyword))
+            );
+
+            if (matches.length > bestScore) {
+                bestScore = matches.length;
+                bestInstitution = institution;
+                bestMatches = matches;
+            }
+        });
+
+        if (!bestInstitution) {
+            return null;
+        }
+
+        return {
+            institutionId: bestInstitution["ID"],
+            institution: bestInstitution["Institution"],
+            college: bestInstitution["Institution"],
+            district: bestInstitution["District"],
+            matches: bestMatches
+        };
+
+    } catch (error) {
+        console.error(
+            "Institution routing error:",
+            error.message
+        );
+
+        return null;
+    }
+};
+
+
+/**
+ * Main routing function
+ */
+const routeProblem = (
+    category,
+    location = "",
+    description = ""
+) => {
+
+    const solutions = findSolutions(
+        category,
+        description
     );
 
-    const requiredKeywords =
-      routingKeywords[category] || routingKeywords["Other"];
+    const institutionResult =
+        findInstitution(category);
 
-    let bestInstitution = null;
-    let bestScore = 0;
-    let bestMatches = [];
-
-    institutions.forEach((institution) => {
-
-      // Real data has "Expertise keywords" as a STRING
-      const expertiseText = normalise(
-        institution["Expertise keywords"]
-      );
-
-      const matches = requiredKeywords.filter((keyword) =>
-        expertiseText.includes(normalise(keyword))
-      );
-
-      if (matches.length > bestScore) {
-        bestScore = matches.length;
-        bestInstitution = institution;
-        bestMatches = matches;
-      }
-    });
-
-
-    if (!bestInstitution) {
-      return {
-        institutionId: null,
-        institution: null,
-        college: null,
-        solutions:[],
-        reason:
-          "No suitable institution was found. Manual review required."
-      };
+    /*
+     * No institution found
+     */
+    if (!institutionResult) {
+        return {
+            institutionId: null,
+            institution: null,
+            college: null,
+            solutions,
+            reason:
+                solutions.length > 0
+                    ? "Relevant solutions were found, but no suitable institution was found. Manual review required."
+                    : "No suitable institution or solution was found. Manual review required."
+        };
     }
 
-
     const reason =
-      `Selected because ${bestInstitution["Institution"]} ` +
-      `has relevant expertise in ${bestMatches.join(", ")} ` +
-      `and is located in ${bestInstitution["District"]}.`;
-
-
-    return {
-      institutionId: bestInstitution["ID"],
-      institution: bestInstitution["Institution"],
-
-      // Keep "college" so the rest of your existing backend
-      // does not immediately break.
-      college: bestInstitution["Institution"],
-      solutions: [],
-
-      reason
-    };
-
-  } catch (error) {
-
-    console.error(
-      "Routing error:",
-      error.message
-    );
+        `Selected because ${institutionResult.institution} ` +
+        `has relevant expertise in ` +
+        `${institutionResult.matches.join(", ")} ` +
+        `and is located in ${institutionResult.district}.`;
 
     return {
-      institutionId: null,
-      institution: null,
-      college: null,
-      solutions: [],
-      reason:
-        "Routing failed. Manual review required."
+        institutionId:
+            institutionResult.institutionId,
+
+        institution:
+            institutionResult.institution,
+
+        college:
+            institutionResult.college,
+
+        solutions,
+
+        reason
     };
-  }
 };
 
 
 module.exports = {
-  routeProblem
+    routeProblem
 };

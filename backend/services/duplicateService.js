@@ -1,4 +1,5 @@
 const OpenAI = require("openai");
+
 const DUPLICATE_TIMEOUT = 15000;
 
 const client = new OpenAI({
@@ -6,13 +7,10 @@ const client = new OpenAI({
     apiKey: process.env.NVIDIA_API_KEY
 });
 
-const checkDuplicate = async (
-    newProblem,
-    existingProblems
-) => {
+const checkDuplicate = async (newProblem, existingProblems) => {
 
     // No existing complaints
-    if (existingProblems.length === 0) {
+    if (!existingProblems || existingProblems.length === 0) {
         return {
             duplicateFound: false,
             duplicateOf: null,
@@ -20,14 +18,12 @@ const checkDuplicate = async (
         };
     }
 
-    const complaints = existingProblems.map(
-        (problem, index) => ({
-            index,
-            id: problem.id,
-            description: problem.description,
-            location: problem.location
-        })
-    );
+    const complaints = existingProblems.map((problem, index) => ({
+        index,
+        id: problem.id,
+        description: problem.description,
+        location: problem.location
+    }));
 
     const prompt = `
 You are checking whether a new citizen complaint
@@ -42,38 +38,39 @@ ${newProblem.location}
 EXISTING COMPLAINTS:
 ${JSON.stringify(complaints)}
 
-Consider a complaint a duplicate only when:
+Consider a complaint a duplicate ONLY when:
 
 1. It refers to the same underlying problem.
-
 2. It is from approximately the same location.
+3. Do NOT mark complaints as duplicates merely because
+   they belong to the same category.
+4. If uncertain, return duplicateFound as false.
 
-3. Do not mark complaints as duplicates merely because they
-belong to the same category. They must describe the same
-or very closely related real-world incident/problem.
+Return ONLY valid JSON.
+Do not use markdown.
+Do not include explanations.
 
-4. If you are uncertain, return duplicateFound as false.
-
-Return ONLY valid JSON:
+Required format:
 
 {
-    "duplicateFound": true,
-    "duplicateIndex": 0,
-    "confidence": 0.0
+  "duplicateFound": false,
+  "duplicateIndex": null,
+  "confidence": 0.0
 }
 
 OR:
 
 {
-    "duplicateFound": false,
-    "duplicateIndex": null,
-    "confidence": 0.0
+  "duplicateFound": true,
+  "duplicateIndex": 0,
+  "confidence": 0.0
 }
 `;
 
     try {
 
         const response = await Promise.race([
+
             client.chat.completions.create({
                 model: "deepseek-ai/deepseek-v4-flash-0731",
                 messages: [
@@ -82,43 +79,75 @@ OR:
                         content: prompt
                     }
                 ],
-                temperature: 0.2,
-                max_tokens: 300,
+                temperature: 0.1,
+                max_tokens: 200,
                 stream: false
             }),
 
             new Promise((_, reject) =>
                 setTimeout(
-                    () => reject(new Error("Duplicate detection timed out.")),
+                    () => reject(
+                        new Error("Duplicate detection timed out.")
+                    ),
                     DUPLICATE_TIMEOUT
                 )
             )
         ]);
 
-        const result =
-            JSON.parse(response.choices[0].message.content);
+        const rawContent =
+            response?.choices?.[0]?.message?.content;
 
-        // Only accept duplicates with >= 75% confidence
+        if (!rawContent) {
+            throw new Error("Empty duplicate detection response.");
+        }
+
+        console.log("DUPLICATE RAW RESPONSE:", rawContent);
+
+        // Remove accidental markdown code fences
+        const cleanedContent = rawContent
+            .replace(/```json/gi, "")
+            .replace(/```/g, "")
+            .trim();
+
+        const result = JSON.parse(cleanedContent);
+
+        if (!result || typeof result !== "object") {
+            throw new Error("Invalid duplicate detection response.");
+        }
+
+        const confidence =
+            typeof result.confidence === "number"
+                ? result.confidence
+                : 0;
+
+        const duplicateIndex =
+            Number.isInteger(result.duplicateIndex)
+                ? result.duplicateIndex
+                : null;
+
+        // Accept duplicate only with >= 75% confidence
         if (
-            result.duplicateFound &&
-            result.duplicateIndex !== null &&
-            result.confidence >= 0.75
+            result.duplicateFound === true &&
+            duplicateIndex !== null &&
+            duplicateIndex >= 0 &&
+            duplicateIndex < existingProblems.length &&
+            confidence >= 0.75
         ) {
 
             const duplicate =
-                existingProblems[result.duplicateIndex];
+                existingProblems[duplicateIndex];
 
             return {
                 duplicateFound: true,
                 duplicateOf: duplicate.id,
-                confidence: result.confidence
+                confidence
             };
         }
 
         return {
             duplicateFound: false,
             duplicateOf: null,
-            confidence: result.confidence
+            confidence
         };
 
     } catch (error) {
@@ -128,6 +157,9 @@ OR:
             error.message
         );
 
+        // Safe fallback:
+        // never block complaint submission because
+        // duplicate detection failed.
         return {
             duplicateFound: false,
             duplicateOf: null,

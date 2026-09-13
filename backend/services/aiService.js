@@ -30,11 +30,14 @@ const callNvidia = (prompt) => {
         "-H", "Content-Type: application/json",
         "-H", `Authorization: Bearer ${process.env.NVIDIA_API_KEY}`,
         "--data-binary", body,
-        "--max-time", "90"
+        "--connect-timeout","10",
+        "--max-time", "30"
       ],
       { maxBuffer: 1024 * 1024 },
       (error, stdout, stderr) => {
         if (error) {
+          console.error("NVIDIA CURL ERROR:", error.message);
+          console.error("NVIDIA CURL STDERR:", stderr);
           reject(error);
           return;
         }
@@ -232,7 +235,26 @@ const analyseProblem = async (description, location) => {
       throw new Error("NVIDIA returned empty message content.");
     }
 
-    const result = JSON.parse(content);
+    let cleanedContent = content.trim();
+
+    if (cleanedContent.startsWith("```")) {
+      cleanedContent = cleanedContent
+        .replace(/^```json\s*/i, "")
+        .replace(/^```\s*/i, "")
+        .replace(/\s*```$/i, "")
+        .trim();
+    }
+
+    const result = JSON.parse(cleanedContent);
+
+    if (
+      !result.category ||
+      typeof result.confidence !== "number"
+    ) {
+      throw new Error("Invalid AI classification format.");
+    }
+
+    return result;
 
     return result;
 
