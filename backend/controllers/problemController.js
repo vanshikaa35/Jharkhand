@@ -131,25 +131,49 @@ const createProblem = async (req, res) => {
 
 
         // --------------------------------
-        // COLLEGE ROUTING
-        // --------------------------------
-
-        console.log("STEP 2: Starting institution routing");
-        const routingResult =
-            routeProblem(
-                aiResult.category
-            );
-        console.log("STEP 3: Institution routing completed");
-        console.log("ROUTING RESULT:", routingResult);
-
-
-        // --------------------------------
-        // HUMAN REVIEW
+        // HUMAN REVIEW + COLLEGE ROUTING
         // --------------------------------
 
         const humanReview =
             aiResult.confidence < 0.65;
 
+        let routingResult;
+
+        if (humanReview) {
+
+            routingResult = {
+                college: null,
+                solutions: [],
+                reason:
+                    "AI confidence is below the required threshold. Manual review required."
+            };
+
+            console.log(
+                "HUMAN REVIEW REQUIRED: AI confidence is",
+                aiResult.confidence
+            );
+
+        } else {
+
+            console.log(
+                "STEP 2: Starting institution routing"
+            );
+
+            routingResult =
+                routeProblem(
+                    aiResult.category,
+                    location
+                );
+
+            console.log(
+                "STEP 3: Institution routing completed"
+            );
+
+            console.log(
+                "ROUTING RESULT:",
+                routingResult
+            );
+        }
 
         // --------------------------------
         // CREATE NEW PROBLEM
@@ -203,9 +227,13 @@ const createProblem = async (req, res) => {
                     ? null
                     : routingResult.college,
 
+            recommendedSolutions:
+                humanReview
+                    ? []
+                    : routingResult.solutions,
+
             routingReason:
                 routingResult.reason,
-
             humanReview,
 
             status:

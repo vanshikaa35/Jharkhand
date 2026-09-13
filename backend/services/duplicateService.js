@@ -1,4 +1,5 @@
 const OpenAI = require("openai");
+const DUPLICATE_TIMEOUT = 15000;
 
 const client = new OpenAI({
     baseURL: "https://integrate.api.nvidia.com/v1",
@@ -72,19 +73,27 @@ OR:
 
     try {
 
-        const response =
-        await client.chat.completions.create({
-        model: "deepseek-ai/deepseek-v4-flash-0731",
-        messages: [
-            {
-                role: "user",
-                content: prompt
-            }
-        ],
-        temperature: 0.2,
-        max_tokens: 1000,
-        stream: false
-    });
+        const response = await Promise.race([
+            client.chat.completions.create({
+                model: "deepseek-ai/deepseek-v4-flash-0731",
+                messages: [
+                    {
+                        role: "user",
+                        content: prompt
+                    }
+                ],
+                temperature: 0.2,
+                max_tokens: 300,
+                stream: false
+            }),
+
+            new Promise((_, reject) =>
+                setTimeout(
+                    () => reject(new Error("Duplicate detection timed out.")),
+                    DUPLICATE_TIMEOUT
+                )
+            )
+        ]);
 
         const result =
             JSON.parse(response.choices[0].message.content);

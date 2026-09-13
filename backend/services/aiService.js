@@ -15,6 +15,14 @@ const callNvidia = (prompt) => {
       stream: false
     });
 
+    console.log(
+      "NVIDIA KEY AVAILABLE:",
+      !!process.env.NVIDIA_API_KEY,
+      "LENGTH:",
+      process.env.NVIDIA_API_KEY
+        ? process.env.NVIDIA_API_KEY.length
+        : 0
+    );
     execFile(
       "curl.exe",
       [
@@ -22,7 +30,7 @@ const callNvidia = (prompt) => {
         "-H", "Content-Type: application/json",
         "-H", `Authorization: Bearer ${process.env.NVIDIA_API_KEY}`,
         "--data-binary", body,
-        "--max-time", "30"
+        "--max-time", "90"
       ],
       { maxBuffer: 1024 * 1024 },
       (error, stdout, stderr) => {

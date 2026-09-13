@@ -8,7 +8,7 @@ const institutionsFile = path.join(
 
 // Keywords that describe what each problem category generally needs
 const routingKeywords = {
-  "Water & Sanitation": [
+  "Water": [
     "water",
     "water quality",
     "water resources",
@@ -109,7 +109,7 @@ const normalise = (text) => {
 };
 
 
-const routeProblem = (category) => {
+const routeProblem = (category, location="") => {
   try {
     const institutions = JSON.parse(
       fs.readFileSync(institutionsFile, "utf-8")
@@ -146,6 +146,7 @@ const routeProblem = (category) => {
         institutionId: null,
         institution: null,
         college: null,
+        solutions:[],
         reason:
           "No suitable institution was found. Manual review required."
       };
@@ -165,6 +166,7 @@ const routeProblem = (category) => {
       // Keep "college" so the rest of your existing backend
       // does not immediately break.
       college: bestInstitution["Institution"],
+      solutions: [],
 
       reason
     };
@@ -180,6 +182,7 @@ const routeProblem = (category) => {
       institutionId: null,
       institution: null,
       college: null,
+      solutions: [],
       reason:
         "Routing failed. Manual review required."
     };
