@@ -9,7 +9,7 @@ const callNvidia = (prompt) => {
   return new Promise((resolve, reject) => {
 
     const body = JSON.stringify({
-      model: "deepseek-ai/deepseek-v4-flash-0731",
+      model: "openai/gpt-oss-20b",
 
       messages: [
         {
@@ -19,7 +19,7 @@ const callNvidia = (prompt) => {
       ],
 
       temperature: 0.2,
-      max_tokens: 3000,
+      max_tokens: 500,
       stream: false
     });
 
@@ -53,7 +53,7 @@ const callNvidia = (prompt) => {
         "10",
 
         "--max-time",
-        "30"
+        "90"
       ],
 
       {
@@ -161,10 +161,25 @@ const analyseProblem = async (
 
 
   const prompt = `
-  You are an AI assistant for a government citizen-problem
-  crowdsourcing platform in Jharkhand.
+  You are the AI problem-analysis engine for a citizen
+  societal-innovation platform for Jharkhand, India.
 
-  Analyse the following citizen complaint.
+  Your task is to analyse a citizen-submitted problem and classify
+  it into exactly ONE predefined category.
+
+  The citizen may write in:
+  - English
+  - Hindi
+  - Hinglish
+  - informal/local language
+  - a mixture of languages
+
+  Do NOT classify based only on individual keywords.
+  Understand the MAIN PURPOSE and CONTEXT of the complaint.
+
+  --------------------------------------------------
+  CITIZEN INPUT
+  --------------------------------------------------
 
   Location:
   ${location}
@@ -172,56 +187,88 @@ const analyseProblem = async (
   Complaint:
   ${description}
 
-  Choose exactly ONE category from:
+  --------------------------------------------------
+  ALLOWED CATEGORIES
+  --------------------------------------------------
 
-  - Water
-  - Agriculture
-  - Healthcare
-  - Education
-  - Environment
-  - Roads & Transport
-  - Electricity
-  - Public Safety
-  - Waste Management
-  - Other
+  You MUST choose exactly ONE of:
 
-  IMPORTANT CATEGORY RULES:
+  1. Water
+  2. Agriculture
+  3. Healthcare
+  4. Education
+  5. Environment
+  6. Roads & Transport
+  7. Electricity
+  8. Public Safety
+  9. Waste Management
+  10. Other
 
-  1. Agriculture:
-  Choose Agriculture when the complaint is mainly related to:
-  - farmers or farming
-  - crops or cultivation
-  - vegetable cultivation
-  - irrigation for agricultural fields
-  - shortage of water for crops
-  - drought affecting crops
-  - soil problems
-  - crop productivity or yield
-  - livestock or agricultural activities
-  - agricultural livelihoods
-  - FPOs
-  - post-harvest losses
-  - agricultural storage or processing
+  Never invent a new category.
 
-  2. Water:
-  Choose Water when the complaint is mainly related to:
-  - drinking water
-  - contaminated or unsafe water
-  - handpump problems
-  - tap water
-  - potable water
+  --------------------------------------------------
+  CATEGORY DEFINITIONS
+  --------------------------------------------------
+
+  WATER
+
+  Choose Water when the MAIN problem concerns water needed
+  for human/domestic use or water quality.
+
+  Examples:
+  - drinking water shortage
+  - contaminated drinking water
+  - dirty/unsafe water
+  - broken handpump used for drinking
+  - household tap water problems
   - groundwater quality
-  - water quality
-  - water supply for households
+  - potable water
+  - household water supply
   - sanitation-related water problems
 
   IMPORTANT:
-  If water is being requested specifically for farming,
-  irrigation, crops, or vegetable cultivation, choose Agriculture
-  instead of Water.
+  If water is primarily needed for crops, farming, irrigation,
+  vegetable cultivation, livestock or agricultural production,
+  choose AGRICULTURE instead.
 
-  3. Healthcare:
-  Choose Healthcare for:
+  --------------------------------------------------
+
+  AGRICULTURE
+
+  Choose Agriculture when the MAIN problem concerns farming,
+  agricultural livelihoods, crops, livestock or agricultural
+  production.
+
+  Examples:
+  - farmers or farming
+  - crop cultivation
+  - vegetable cultivation
+  - irrigation for agricultural fields
+  - lack of water for crops
+  - drought affecting crops
+  - soil problems
+  - low crop productivity/yield
+  - livestock
+  - agricultural livelihoods
+  - FPOs
+  - post-harvest losses
+  - agricultural storage
+  - agricultural processing
+
+  Example:
+  "Farmers cannot grow vegetables because there is not enough
+  water for irrigation."
+
+  Category = Agriculture.
+
+  --------------------------------------------------
+
+  HEALTHCARE
+
+  Choose Healthcare when the MAIN problem concerns healthcare
+  access, medical treatment or health services.
+
+  Examples:
   - hospitals
   - PHCs
   - doctors
@@ -229,73 +276,276 @@ const analyseProblem = async (
   - disease
   - healthcare access
   - telemedicine
-  - maternal or child healthcare
+  - maternal healthcare
+  - child healthcare
+  - lack of medical facilities
 
-  4. Education:
-  Choose Education for:
+  --------------------------------------------------
+
+  EDUCATION
+
+  Choose Education when the MAIN problem concerns education,
+  schools, students, teachers or learning facilities.
+
+  Examples:
   - schools
   - teachers
   - students
   - classrooms
-  - education facilities
-  - learning
+  - lack of educational facilities
+  - learning resources
+  - digital education
+  - school infrastructure
 
-  5. Environment:
-  Choose Environment for:
-  - pollution
-  - forests
-  - climate
-  - environmental degradation
+  --------------------------------------------------
+
+  ENVIRONMENT
+
+  Choose Environment when the MAIN problem concerns environmental
+  damage or ecological conditions.
+
+  Examples:
+  - air pollution
+  - environmental pollution
+  - forest degradation
+  - climate-related environmental problems
   - wildlife
-  - ecological problems
+  - ecological damage
+  - loss of green cover
+  - environmental degradation
 
-  6. Roads & Transport:
-  Choose Roads & Transport for:
+  IMPORTANT ENVIRONMENT vs WATER RULE:
+
+  If water is mentioned because it is being POLLUTED, CONTAMINATED,
+  or environmentally damaged by industrial activity, sewage,
+  chemicals, dumping, or pollution, classify the complaint as
+  ENVIRONMENT.
+
+  Choose WATER when the primary problem is ACCESS TO, AVAILABILITY
+  OF, or QUALITY OF WATER FOR HUMAN/DOMESTIC USE.
+
+  Examples:
+
+  "Factory is polluting the river."
+  → Environment
+
+  "Industrial waste is being released into the river."
+  → Environment
+
+  "River water is becoming polluted because of factory waste."
+  → Environment
+
+  "Chemical pollution is affecting the river."
+  → Environment
+
+  "Peene ka paani ganda aa raha hai."
+  → Water
+
+  "Gaon mein drinking water nahi mil raha."
+  → Water
+
+  "Handpump ka paani contaminated hai."
+  → Water
+
+  The presence of the words "water", "paani", "river", or "nadi"
+  MUST NOT automatically result in the Water category.
+
+  Determine whether the complaint is primarily about:
+  A) people obtaining/using water → WATER
+  OR
+  B) pollution/environmental damage affecting a water body → ENVIRONMENT.
+
+  --------------------------------------------------
+
+  ROADS & TRANSPORT
+
+  Choose Roads & Transport when the MAIN problem concerns physical
+  transport infrastructure or transportation.
+
+  Examples:
   - damaged roads
   - potholes
-  - bridges
+  - broken bridges
+  - unsafe roads
   - public transport
   - traffic
-  - transportation problems
+  - congestion
+  - transportation access
+  - road infrastructure
 
-  7. Electricity:
-  Choose Electricity for:
+  --------------------------------------------------
+
+  ELECTRICITY
+
+  Choose Electricity when the MAIN problem concerns electricity,
+  power supply or electrical infrastructure.
+
+  Examples:
   - power cuts
+  - unreliable electricity
   - electricity supply
   - transformers
   - electric connections
   - street electricity
+  - electricity infrastructure
+  - renewable-energy/electricity access problems
 
-  8. Public Safety:
-  Choose Public Safety for:
+  --------------------------------------------------
+
+  PUBLIC SAFETY
+
+  Choose Public Safety when the MAIN problem concerns immediate
+  public safety, crime, accidents, emergency response or law
+  and order.
+
+  Examples:
   - crime
   - women's safety
+  - unsafe public areas
   - accidents
   - emergency safety
-  - law and order
+  - police/law-and-order issues
+  - disaster-related public safety
 
-  9. Waste Management:
-  Choose Waste Management for:
+  --------------------------------------------------
+
+  WASTE MANAGEMENT
+
+  Choose Waste Management when the MAIN problem concerns waste
+  generation, collection, dumping, disposal or recycling.
+
+  Examples:
   - garbage
+  - garbage collection
   - waste collection
-  - dumping
+  - illegal dumping
   - solid waste
-  - sewage/waste disposal
+  - plastic waste
+  - landfill
+  - recycling
+  - waste disposal
 
-  Use the MAIN purpose of the complaint when choosing the category.
+  --------------------------------------------------
 
-  Return ONLY valid JSON in this exact structure:
+  OTHER
+
+  Choose Other ONLY when the complaint genuinely does not fit
+  any of the nine defined categories.
+
+  Before selecting Other, carefully reconsider whether the
+  complaint can reasonably be classified as Water, Agriculture,
+  Healthcare, Education, Environment, Roads & Transport,
+  Electricity, Public Safety, or Waste Management.
+
+  Do NOT use Other simply because the complaint is ambiguous,
+  informal, written in Hindi/Hinglish, or contains multiple
+  keywords.
+
+  If the complaint clearly describes environmental pollution,
+  ecological damage, or pollution of a river/lake/forest/land,
+  choose Environment rather than Other.
+
+  --------------------------------------------------
+  IMPORTANT DECISION RULES
+  --------------------------------------------------
+
+  RULE 1:
+  Classify according to the MAIN PURPOSE of the complaint,
+  not the most frequently mentioned word.
+
+  RULE 2:
+  Water for farming/crops/irrigation = Agriculture.
+
+  Drinking/domestic water/water quality = Water.
+
+  RULE 3:
+  Garbage collection/disposal/dumping = Waste Management.
+
+  Pollution/ecological/environmental damage = Environment.
+
+  RULE 4:
+  A complaint may mention multiple issues.
+  Choose the category representing the PRIMARY problem.
+
+  RULE 5:
+  Do not invent facts that are not present in the complaint.
+
+  RULE 6:
+  The location should NOT determine the category unless the
+  complaint itself provides relevant context.
+
+  RULE 7:
+  Hindi/Hinglish expressions must be understood semantically.
+
+  For example:
+  "gaon mein peene ka paani ganda aa raha hai"
+  means contaminated drinking water → Water.
+
+  "fasal ke liye paani nahi mil raha"
+  means lack of agricultural water → Agriculture.
+
+  RULE 8:
+  Confidence represents how certain you are about the category,
+  not how serious the problem is.
+
+  Use:
+  0.90–1.00 = very clear classification
+  0.75–0.89 = strong classification with minor ambiguity
+  0.60–0.74 = reasonably likely but ambiguous
+  below 0.60 = highly ambiguous / insufficient information
+
+  Do NOT automatically give 1.0.
+
+  --------------------------------------------------
+  SUMMARY
+  --------------------------------------------------
+
+  Write a concise summary of the citizen's actual problem.
+
+  The summary should:
+  - preserve the important facts
+  - be understandable to a government/university reviewer
+  - NOT invent information
+  - be approximately 1–2 sentences
+
+  --------------------------------------------------
+  REASON
+  --------------------------------------------------
+
+  Explain briefly why the selected category is the best match.
+
+  Mention the main issue/context that led to the classification.
+
+  Do NOT simply repeat the category name.
+
+  --------------------------------------------------
+  OUTPUT FORMAT
+  --------------------------------------------------
+
+  Return ONLY valid JSON.
+
+  Do not include:
+  - Markdown
+  - code fences
+  - explanations outside JSON
+  - introductory text
+  - trailing text
+
+  Use exactly this structure:
 
   {
-    "category": "...",
-    "summary": "...",
-    "confidence": 0.0,
-    "reason": "..."
+    "category": "one allowed category",
+    "summary": "concise problem summary",
+    "confidence": 0.00,
+    "reason": "brief explanation for the classification"
   }
 
-  confidence must be a number between 0 and 1.
-  `;
+  The category MUST exactly match one of the allowed category names.
 
+  The confidence MUST be a JSON number between 0 and 1.
+
+  The output MUST be valid JSON.
+  `;
 
   // ===============================
   // CALL AI
