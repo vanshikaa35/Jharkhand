@@ -1,112 +1,464 @@
 [
   {
-    "ID": "U001",
-    "Institution": "Birsa Agricultural University (BAU)",
-    "Type": "State Agricultural University",
-    "District": "Ranchi",
-    "Key departments / labs": "Agricultural Engineering, Agronomy, Irrigation & Drainage",
-    "Expertise keywords": "irrigation, drip, rainwater harvesting, doba, soil–water conservation",
-    "Notable past work / role": "Drip irrigation & doba interventions for smallholders",
-    "Capability": "High",
-    "Source": "BAU drip study"
+    "sector": "Water",
+    "institution_name": "Ministry of Jal Shakti",
+    "institution_type": "Government Department",
+    "role": "Policy and program leadership for water",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
   },
   {
-    "ID": "U002",
-    "Institution": "Central University of Jharkhand (CUJ)",
-    "Type": "Central University",
-    "District": "Ranchi",
-    "Key departments / labs": "Civil/Water Engineering, Environmental Sciences, CSE",
-    "Expertise keywords": "water resources, irrigation, environmental engg, AI, NLP",
-    "Notable past work / role": "Water engineering projects; AI/NLP research in CSE",
-    "Capability": "High",
-    "Source": "CUJ departments"
+    "sector": "Water",
+    "institution_name": "Central Ground Water Board (CGWB)",
+    "institution_type": "Government Department",
+    "role": "Groundwater assessment and management",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
   },
   {
-    "ID": "U003",
-    "Institution": "BIT Mesra",
-    "Type": "Deemed University",
-    "District": "Ranchi",
-    "Key departments / labs": "Civil & Environmental Engineering",
-    "Expertise keywords": "water quality, groundwater, hydrology, wastewater, solid waste",
-    "Notable past work / role": "Research on groundwater, water sustainability, remediation",
-    "Capability": "High",
-    "Source": "BIT Mesra CEE"
+    "sector": "Water",
+    "institution_name": "Delhi Jal Board (DJB)",
+    "institution_type": "Government Department",
+    "role": "Urban water supply in Delhi",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
   },
   {
-    "ID": "U004",
-    "Institution": "IIT (ISM) Dhanbad",
-    "Type": "IIT",
-    "District": "Dhanbad",
-    "Key departments / labs": "Environmental Science & Engg; Centre for Water Resource Management",
-    "Expertise keywords": "water treatment, groundwater, watershed, RS & GIS, climate",
-    "Notable past work / role": "Watershed, groundwater, water treatment research",
-    "Capability": "High",
-    "Source": "IIT ISM CWRM"
+    "sector": "Water",
+    "institution_name": "WaterAid India",
+    "institution_type": "NGO",
+    "role": "WASH programs and advocacy",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
   },
   {
-    "ID": "U005",
-    "Institution": "NIT Jamshedpur",
-    "Type": "NIT",
-    "District": "Jamshedpur",
-    "Key departments / labs": "Computer Science & Engineering",
-    "Expertise keywords": "AI, NLP, ML, deep learning, computer vision",
-    "Notable past work / role": "AI/NLP research projects",
-    "Capability": "Medium–High",
-    "Source": "NIT JSR CSE"
+    "sector": "Water",
+    "institution_name": "Centre for Science and Environment (CSE)",
+    "institution_type": "NGO",
+    "role": "Research and advocacy on water policy",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
   },
   {
-    "ID": "U006",
-    "Institution": "MRHRU, Namkum",
-    "Type": "Govt Research Unit (ICMR-associated)",
-    "District": "Ranchi",
-    "Key departments / labs": "Rural Health Research, Public Health",
-    "Expertise keywords": "rural health, tribal health, health systems, telemedicine",
-    "Notable past work / role": "Rural/tribal health research; telemedicine collaboration",
-    "Capability": "Medium",
-    "Source": "MRHRU page"
+    "sector": "Water",
+    "institution_name": "IIT Delhi (Hydrology & Water Resources)",
+    "institution_type": "University/Research",
+    "role": "Research on water resources and management",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
   },
   {
-    "ID": "U007",
-    "Institution": "JSLPS",
-    "Type": "Govt Society / Livelihood Agency",
-    "District": "Ranchi (statewide)",
-    "Key departments / labs": "Livelihoods, Agriculture & Water, FPO support",
-    "Expertise keywords": "micro-irrigation, livelihoods, FPOs, agriculture intensification",
-    "Notable past work / role": "I-HIMDI micro-drip irrigation in 12 districts",
-    "Capability": "High",
-    "Source": "I-HIMDI survey"
+    "sector": "Water",
+    "institution_name": "VA Tech Wabag",
+    "institution_type": "Company/Industry",
+    "role": "Water treatment and desalination",
+    "source_links": "https://www.worldbank.org/ext/en/topic/water"
   },
   {
-    "ID": "U008",
-    "Institution": "JREDA",
-    "Type": "State Renewable Energy Agency",
-    "District": "Ranchi",
-    "Key departments / labs": "Solar Energy, Renewable Energy for Agriculture",
-    "Expertise keywords": "solar cold storage, solar dryers, renewable energy, FPOs",
-    "Notable past work / role": "Solar cold storage & dryers for FPOs",
-    "Capability": "Medium–High",
-    "Source": "JREDA solar"
+    "sector": "Water",
+    "institution_name": "India Water Portal",
+    "institution_type": "Platform/Initiative",
+    "role": "Knowledge sharing on water issues",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
   },
   {
-    "ID": "U009",
-    "Institution": "ICAR-IARI Jharkhand",
-    "Type": "National Agri Research Institute",
-    "District": "Hazaribagh (Barhi, Gauria Karma)",
-    "Key departments / labs": "Agriculture & Allied Sectors",
-    "Expertise keywords": "crop productivity, NRM, soil–water, sustainable agri",
-    "Notable past work / role": "Crop & soil–water research for Jharkhand",
-    "Capability": "Medium–High",
-    "Source": "ICAR-IARI JH"
+    "sector": "Agriculture",
+    "institution_name": "Ministry of Agriculture & Farmers Welfare",
+    "institution_type": "Government Department",
+    "role": "Policy and program leadership for agriculture",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
   },
   {
-    "ID": "U010",
-    "Institution": "J-Hub Incubation Centre",
-    "Type": "Incubation Centre",
-    "District": "Ranchi",
-    "Key departments / labs": "Innovation, Entrepreneurship, Tech Startups",
-    "Expertise keywords": "startup incubation, innovation, mentorship, social tech",
-    "Notable past work / role": "Support for university-born startup ideas",
-    "Capability": "Emerging",
-    "Source": "J-Hub news"
+    "sector": "Agriculture",
+    "institution_name": "ICAR (Indian Council of Agricultural Research)",
+    "institution_type": "University/Research",
+    "role": "Agricultural research network",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Agriculture",
+    "institution_name": "NABARD",
+    "institution_type": "Government Department",
+    "role": "Rural finance and development",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Agriculture",
+    "institution_name": "BAIF",
+    "institution_type": "NGO",
+    "role": "Livelihood and agriculture development",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Agriculture",
+    "institution_name": "IARI (Pusa)",
+    "institution_type": "University/Research",
+    "role": "Agricultural research and extension",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Agriculture",
+    "institution_name": "Jain Irrigation",
+    "institution_type": "Company/Industry",
+    "role": "Micro-irrigation solutions",
+    "source_links": "https://www.worldbank.org/ext/en/topic/water"
+  },
+  {
+    "sector": "Agriculture",
+    "institution_name": "e-NAM portal",
+    "institution_type": "Platform/Initiative",
+    "role": "Online agricultural market",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Healthcare",
+    "institution_name": "Ministry of Health & Family Welfare (MoHFW)",
+    "institution_type": "Government Department",
+    "role": "Policy and program leadership for health",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Healthcare",
+    "institution_name": "National Health Authority (NHA)",
+    "institution_type": "Government Department",
+    "role": "PM-JAY implementation",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Healthcare",
+    "institution_name": "AIIMS",
+    "institution_type": "University/Research",
+    "role": "Tertiary care and medical research",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Healthcare",
+    "institution_name": "PATH India",
+    "institution_type": "NGO",
+    "role": "Public health programs and innovation",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Healthcare",
+    "institution_name": "Apollo Hospitals",
+    "institution_type": "Company/Industry",
+    "role": "Private healthcare delivery",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Healthcare",
+    "institution_name": "eSanjeevani portal",
+    "institution_type": "Platform/Initiative",
+    "role": "Telemedicine services",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Education",
+    "institution_name": "Ministry of Education",
+    "institution_type": "Government Department",
+    "role": "Policy and program leadership for education",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Education",
+    "institution_name": "NCERT",
+    "institution_type": "Government Department",
+    "role": "Curriculum and teacher training",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Education",
+    "institution_name": "Pratham",
+    "institution_type": "NGO",
+    "role": "Foundational learning programs",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Education",
+    "institution_name": "TISS",
+    "institution_type": "University/Research",
+    "role": "Education policy and research",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Education",
+    "institution_name": "BYJU’S",
+    "institution_type": "Company/Industry",
+    "role": "EdTech platform",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Education",
+    "institution_name": "DIKSHA platform",
+    "institution_type": "Platform/Initiative",
+    "role": "Digital education content",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Environment",
+    "institution_name": "Ministry of Environment, Forest and Climate Change (MoEFCC)",
+    "institution_type": "Government Department",
+    "role": "Environmental policy and regulation",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Environment",
+    "institution_name": "CPCB",
+    "institution_type": "Government Department",
+    "role": "Pollution monitoring and regulation",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Environment",
+    "institution_name": "CSE",
+    "institution_type": "NGO",
+    "role": "Environmental research and advocacy",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Environment",
+    "institution_name": "IIT Delhi (Centre for Atmospheric Sciences)",
+    "institution_type": "University/Research",
+    "role": "Air quality and climate research",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Environment",
+    "institution_name": "ReNew Power",
+    "institution_type": "Company/Industry",
+    "role": "Renewable energy projects",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Environment",
+    "institution_name": "SAFAR",
+    "institution_type": "Platform/Initiative",
+    "role": "Air quality forecasting",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Roads & Transport",
+    "institution_name": "Ministry of Road Transport & Highways (MoRTH)",
+    "institution_type": "Government Department",
+    "role": "Highways and road policy",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Roads & Transport",
+    "institution_name": "Delhi Transport Department",
+    "institution_type": "Government Department",
+    "role": "Urban transport policy in Delhi",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Roads & Transport",
+    "institution_name": "DMRC",
+    "institution_type": "Government Department",
+    "role": "Metro rail operations",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Roads & Transport",
+    "institution_name": "WRI India",
+    "institution_type": "NGO",
+    "role": "Sustainable transport programs",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Roads & Transport",
+    "institution_name": "IIT Delhi (TRIPP)",
+    "institution_type": "University/Research",
+    "role": "Transport and road safety research",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Roads & Transport",
+    "institution_name": "Ola Electric",
+    "institution_type": "Company/Industry",
+    "role": "EV manufacturing and mobility",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Roads & Transport",
+    "institution_name": "mParivahan app",
+    "institution_type": "Platform/Initiative",
+    "role": "Digital transport services",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Electricity",
+    "institution_name": "Ministry of Power",
+    "institution_type": "Government Department",
+    "role": "Power sector policy",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Electricity",
+    "institution_name": "MNRE",
+    "institution_type": "Government Department",
+    "role": "Renewable energy policy",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Electricity",
+    "institution_name": "Delhi DISCOMs (BSES, TPDDL, TPVNL)",
+    "institution_type": "Government Department",
+    "role": "Electricity distribution in Delhi",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Electricity",
+    "institution_name": "CEEW",
+    "institution_type": "NGO",
+    "role": "Energy policy research",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Electricity",
+    "institution_name": "IIT Delhi (Centre for Energy Studies)",
+    "institution_type": "University/Research",
+    "role": "Energy research and innovation",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Electricity",
+    "institution_name": "NTPC",
+    "institution_type": "Company/Industry",
+    "role": "Power generation",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Electricity",
+    "institution_name": "UJALA portal",
+    "institution_type": "Platform/Initiative",
+    "role": "LED distribution program",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "Ministry of Home Affairs (MHA)",
+    "institution_type": "Government Department",
+    "role": "Internal security and public safety",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "NDMA",
+    "institution_type": "Government Department",
+    "role": "Disaster management policy",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "Delhi Police",
+    "institution_type": "Government Department",
+    "role": "Law enforcement in Delhi",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "SaveLIFE Foundation",
+    "institution_type": "NGO",
+    "role": "Road safety and emergency care",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "IIIT Delhi",
+    "institution_type": "University/Research",
+    "role": "Cybersecurity and AI research",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "Staqu (AI for policing)",
+    "institution_type": "Company/Industry",
+    "role": "AI-based surveillance solutions",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "National Cyber Crime Portal",
+    "institution_type": "Platform/Initiative",
+    "role": "Cybercrime reporting",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Waste Management",
+    "institution_name": "MoHUA",
+    "institution_type": "Government Department",
+    "role": "Urban development and Swachh Bharat",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Waste Management",
+    "institution_name": "Delhi Municipal Corporations (SDMC, NDMC, EDMC)",
+    "institution_type": "Government Department",
+    "role": "Solid waste management in Delhi",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Waste Management",
+    "institution_name": "Chintan",
+    "institution_type": "NGO",
+    "role": "Waste picker integration and recycling",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Waste Management",
+    "institution_name": "TERI",
+    "institution_type": "University/Research",
+    "role": "Environmental research and waste solutions",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Waste Management",
+    "institution_name": "Ramky Enviro",
+    "institution_type": "Company/Industry",
+    "role": "Waste management services",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Waste Management",
+    "institution_name": "Swachh Survekshan",
+    "institution_type": "Platform/Initiative",
+    "role": "Urban sanitation rankings",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Other",
+    "institution_name": "MeitY (Ministry of Electronics & IT)",
+    "institution_type": "Government Department",
+    "role": "Digital India leadership",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Other",
+    "institution_name": "NITI Aayog",
+    "institution_type": "Government Department",
+    "role": "Policy think tank and convergence",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Other",
+    "institution_name": "Centre for Policy Research (CPR)",
+    "institution_type": "NGO",
+    "role": "Policy research and governance",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Other",
+    "institution_name": "IITs (data science)",
+    "institution_type": "University/Research",
+    "role": "Data-driven governance research",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Other",
+    "institution_name": "Tech Mahindra (CSC support)",
+    "institution_type": "Company/Industry",
+    "role": "CSC operations and digital services",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+  },
+  {
+    "sector": "Other",
+    "institution_name": "data.gov.in",
+    "institution_type": "Platform/Initiative",
+    "role": "Open government data",
+    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
   }
 ]
