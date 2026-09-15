@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, ImagePlus, Loader2 } from "lucide-react";
+import { MapPin, ImagePlus, Loader2,AlertCircle } from "lucide-react";
 import Button from "../components/Button.jsx";
-import { categorizeComplaint } from "../services/aiRouter.js";
+import { submitProblem } from "../services/api.js";
 
 export default function Submit() {
   const navigate = useNavigate();
@@ -13,16 +13,42 @@ export default function Submit() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!text.trim()) return;
+
+    if (!text.trim() || !location.trim()) {
+      return;
+    }
 
     setSubmitting(true);
-    const result = await categorizeComplaint(text);
-    setSubmitting(false);
 
-    // Pass the submission + AI result forward to the results page.
-    navigate("/routing-result", {
-      state: { text, location, photoName: photo?.name, result },
-    });
+    try {
+      const response = await createProblem({
+        description: text.trim(),
+        location: location.trim(),
+        photo: photo,
+      });
+
+      console.log("Backend response:", response);
+
+      navigate("/routing-result", {
+        state: {
+          problem: response.problem,
+        },
+      });
+
+    } catch (error) {
+      console.error(
+        "Error submitting problem:",
+        error
+      );
+
+      alert(
+        error.message ||
+        "Failed to submit the problem."
+      );
+
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -68,7 +94,39 @@ export default function Submit() {
             />
           </div>
         </div>
+        <div>
+          <label className="block text-sm font-semibold mb-2">
+            Photo (optional)
+          </label>
 
+          <label
+            htmlFor="photo"
+            className="flex items-center gap-3 rounded-2xl border border-dashed border-sage-dark bg-cream p-4 cursor-pointer hover:border-marigold/60 transition-colors"
+          >
+            <ImagePlus
+              size={20}
+              className="text-ink-soft"
+            />
+
+            <span className="text-sm text-ink-soft">
+              {photo
+                ? photo.name
+                : "Tap to attach a photo"}
+            </span>
+
+            <input
+              id="photo"
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) =>
+                setPhoto(
+                  e.target.files?.[0] ?? null
+                )
+              }
+            />
+          </label>
+        </div>
         <div>
           <label className="block text-sm font-semibold mb-2">
             Photo (optional)
