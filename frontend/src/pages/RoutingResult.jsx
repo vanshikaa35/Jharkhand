@@ -162,24 +162,28 @@ export default function RoutingResult() {
               />
 
               <span className="font-semibold">
-                {assignedCollege.institution ||
-                  assignedCollege.college ||
-                  "Assigned institution"}
+                {typeof assignedCollege === "string"
+                  ? assignedCollege
+                  : assignedCollege.institution ||
+                    assignedCollege.college ||
+                    "Institution assigned"}
               </span>
 
             </div>
 
-            {assignedCollege.district && (
-              <p className="text-xs text-ink-soft">
-                {assignedCollege.district}
-              </p>
-            )}
+            {typeof assignedCollege === "object" &&
+              assignedCollege.district && (
+                <p className="text-xs text-ink-soft">
+                  {assignedCollege.district}
+                </p>
+              )}
 
-            {assignedCollege.role && (
-              <p className="text-sm text-ink-soft mt-2">
-                {assignedCollege.role}
-              </p>
-            )}
+            {typeof assignedCollege === "object" &&
+              assignedCollege.role && (
+                <p className="text-sm text-ink-soft mt-2">
+                  {assignedCollege.role}
+                </p>
+              )}
 
           </div>
 
@@ -273,7 +277,7 @@ export default function RoutingResult() {
         Current status:
 
         <span className="font-semibold text-ink ml-1">
-          {status}
+          {status?.replace(/_/g, " ")}
         </span>
 
       </div>

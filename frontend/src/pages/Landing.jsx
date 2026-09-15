@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   Camera,
   Sparkles,
@@ -51,6 +52,27 @@ const modules = [
 ];
 
 export default function Landing() {
+
+  const [latestProblem, setLatestProblem] = useState(null);
+
+  useEffect(() => {
+    const savedProblem =
+      localStorage.getItem("latestProblem");
+
+    if (savedProblem) {
+      try {
+        setLatestProblem(
+          JSON.parse(savedProblem)
+        );
+      } catch (error) {
+        console.error(
+          "Could not load latest problem:",
+          error
+        );
+      }
+    }
+  }, []);
+
   return (
     <div>
       {/* Hero */}
@@ -65,7 +87,7 @@ export default function Landing() {
               Every local problem deserves someone working on it.
             </h1>
             <p className="mt-5 text-ink-soft text-lg max-w-md">
-              Sajha Samadhan connects citizens who spot a problem with the
+              Sujh Bujh connects citizens who spot a problem with the
               universities and companies who can actually solve it — no
               phone calls, no dead ends.
             </p>
@@ -79,23 +101,56 @@ export default function Landing() {
             </div>
           </div>
 
-          {/* Live-looking submission preview card */}
+          {/* Latest submission preview card */}
           <div className="bg-cream rounded-3xl shadow-[0_20px_60px_-20px_rgba(30,58,50,0.25)] p-6 border border-sage-dark/60">
+
             <p className="text-xs font-semibold text-ink-soft uppercase tracking-wide mb-3">
-              Just submitted
+              {latestProblem ? "Just submitted" : "Latest report"}
             </p>
+
             <p className="font-medium text-ink mb-4">
-              "No water supply in our ward for the last 5 days, borewell is
-              also dry."
+              {latestProblem
+                ? `"${latestProblem.description}"`
+                : '"No report submitted yet."'}
             </p>
-            <div className="flex items-center gap-2 flex-wrap mb-4">
-              <Tag tone="sky">Water</Tag>
-              <Tag tone="blush">Ranchi, Ward 4</Tag>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-marigold-dark font-semibold">
-              <Sparkles size={16} />
-              Routed to BIT Mesra — water-tech incubation cell
-            </div>
+
+            {latestProblem && (
+              <>
+                <div className="flex items-center gap-2 flex-wrap mb-4">
+
+                  {latestProblem.category && (
+                    <Tag tone="sky">
+                      {latestProblem.category}
+                    </Tag>
+                  )}
+
+                  {latestProblem.location && (
+                    <Tag tone="blush">
+                      {latestProblem.location}
+                    </Tag>
+                  )}
+
+                </div>
+
+                {latestProblem.assignedCollege && (
+                  <div className="flex items-center gap-2 text-sm text-marigold-dark font-semibold">
+
+                    <Sparkles size={16} />
+
+                    <span>
+                      Routed to{" "}
+                      {typeof latestProblem.assignedCollege === "string"
+                        ? latestProblem.assignedCollege
+                        : latestProblem.assignedCollege.institution ||
+                          latestProblem.assignedCollege.college ||
+                          "the appropriate institution"}
+                    </span>
+
+                  </div>
+                )}
+              </>
+            )}
+
           </div>
         </div>
       </section>

@@ -1485,5 +1485,100 @@
     "humanReview": false,
     "status": "assigned",
     "createdAt": "2026-09-15T12:02:48.857Z"
+  },
+  {
+    "id": "1789475384476",
+    "description": "no water supply since last 5 days",
+    "location": "jamshedpur",
+    "imageUrl": null,
+    "category": "Water",
+    "summary": "no water supply since last 5 days",
+    "confidence": 0.85,
+    "duplicateFound": false,
+    "duplicateOf": null,
+    "duplicateCount": 0,
+    "assignedCollege": "State Water and Sanitation Mission (SWSM) Jharkhand",
+    "recommendedSolutions": [
+      {
+        "id": "S010",
+        "problemTitle": "Contaminated drinking water in settlements",
+        "solutionTitle": "Community-managed low-cost water filter (iron removal, potable water)",
+        "whereImplemented": "Urban/peri-urban low-income settlement (India; concept transferable to Jharkhand towns)",
+        "implementer": "Community organization + technical support; managed by local youth/children groups",
+        "outcome": "Improved access to potable water at community scale; reduced iron & better taste/acceptance",
+        "transferability": "Medium",
+        "sources": [
+          "https://www.witpress.com/Secure/elibrary/papers/WS11/WS11025FU1.pdf"
+        ],
+        "linkedInstitutions": []
+      },
+      {
+        "id": "S006",
+        "problemTitle": "Unsafe drinking water in schools/households",
+        "solutionTitle": "School-based safe water & hygiene intervention (purifiers + education)",
+        "whereImplemented": "Southern India pilot (concept transferable to Jharkhand schools)",
+        "implementer": "UNICEF + Hindustan Unilever Limited",
+        "outcome": "Increased awareness & some increase in purifier ownership; sustained household behavior change limited without ongoing engagement",
+        "transferability": "Medium",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC3042810/"
+        ],
+        "linkedInstitutions": []
+      },
+      {
+        "id": "S001",
+        "problemTitle": "Rural drinking-water contamination",
+        "solutionTitle": "Community-scale water treatment / safe-water & hygiene intervention",
+        "whereImplemented": "Rural & school settings in India (incl. Jharkhand-relevant contexts)",
+        "implementer": "Govt/NGO/university partnerships (e.g., UNICEF, HUL, community orgs)",
+        "outcome": "Improved drinking-water quality in schools/communities; mixed long-term household adoption without sustained support",
+        "transferability": "Medium",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC3042810/",
+          "https://www.witpress.com/Secure/elibrary/papers/WS11/WS11025FU1.pdf"
+        ],
+        "linkedInstitutions": []
+      }
+    ],
+    "routingReason": "Selected State Water and Sanitation Mission (SWSM) Jharkhand because it is linked to the relevant Water solution/problem: Unreliable piped supply in small towns, Smart water meters & IoT leak detection.",
+    "humanReview": false,
+    "status": "assigned",
+    "createdAt": "2026-09-15T12:29:44.476Z"
+  },
+  {
+    "id": "1789475718038",
+    "description": "there is a pothole on the main road",
+    "location": "ranchi",
+    "imageUrl": null,
+    "category": "Other",
+    "summary": "there is a pothole on the main road",
+    "confidence": 0.2,
+    "duplicateFound": false,
+    "duplicateOf": null,
+    "duplicateCount": 1,
+    "assignedCollege": null,
+    "recommendedSolutions": [],
+    "routingReason": "AI confidence is below the required threshold. Manual review required.",
+    "humanReview": true,
+    "status": "under_review",
+    "createdAt": "2026-09-15T12:35:18.039Z"
+  },
+  {
+    "id": "1789476505117",
+    "description": "there is a pothole on the main road",
+    "location": "ranchi",
+    "imageUrl": null,
+    "category": "Other",
+    "summary": "there is a pothole on the main road",
+    "confidence": 0.2,
+    "duplicateFound": true,
+    "duplicateOf": "1789475718038",
+    "duplicateCount": 0,
+    "assignedCollege": null,
+    "recommendedSolutions": [],
+    "routingReason": "AI confidence is below the required threshold. Manual review required.",
+    "humanReview": true,
+    "status": "under_review",
+    "createdAt": "2026-09-15T12:48:25.118Z"
   }
 ]

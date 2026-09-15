@@ -28,6 +28,15 @@ export default function Submit() {
 
       console.log("Backend response:", response);
 
+      // Save the latest submitted problem
+      // so the Home page can show it dynamically.
+      if (response?.problem) {
+        localStorage.setItem(
+          "latestProblem",
+          JSON.stringify(response.problem)
+        );
+      }
+
       navigate("/routing-result", {
         state: {
           problem: response.problem,
@@ -93,39 +102,7 @@ export default function Submit() {
             />
           </div>
         </div>
-        <div>
-          <label className="block text-sm font-semibold mb-2">
-            Photo (optional)
-          </label>
 
-          <label
-            htmlFor="photo"
-            className="flex items-center gap-3 rounded-2xl border border-dashed border-sage-dark bg-cream p-4 cursor-pointer hover:border-marigold/60 transition-colors"
-          >
-            <ImagePlus
-              size={20}
-              className="text-ink-soft"
-            />
-
-            <span className="text-sm text-ink-soft">
-              {photo
-                ? photo.name
-                : "Tap to attach a photo"}
-            </span>
-
-            <input
-              id="photo"
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={(e) =>
-                setPhoto(
-                  e.target.files?.[0] ?? null
-                )
-              }
-            />
-          </label>
-        </div>
         <div>
           <label className="block text-sm font-semibold mb-2">
             Photo (optional)
