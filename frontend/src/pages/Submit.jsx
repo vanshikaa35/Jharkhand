@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MapPin, ImagePlus, Loader2,AlertCircle } from "lucide-react";
 import Button from "../components/Button.jsx";
-import { submitProblem } from "../services/api.js";
+import { submitProblem } from "../services/aiRouter.js";
 
 export default function Submit() {
   const navigate = useNavigate();
@@ -21,11 +21,10 @@ export default function Submit() {
     setSubmitting(true);
 
     try {
-      const response = await createProblem({
-        description: text.trim(),
-        location: location.trim(),
-        photo: photo,
-      });
+      const response = await submitProblem(
+        text.trim(),
+        location.trim(),
+      );
 
       console.log("Backend response:", response);
 
