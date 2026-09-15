@@ -1,464 +1,457 @@
 [
   {
     "sector": "Water",
-    "institution_name": "Ministry of Jal Shakti",
+    "institution_name": "Department of Drinking Water & Sanitation, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Policy and program leadership for water",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Nodal department for Jal Jeevan Mission implementation in Jharkhand",
+    "source_links": "https://cag.gov.in/ag/jharkhand/en/audit-report/details/126028"
   },
   {
     "sector": "Water",
-    "institution_name": "Central Ground Water Board (CGWB)",
+    "institution_name": "State Water and Sanitation Mission (SWSM) Jharkhand",
     "institution_type": "Government Department",
-    "role": "Groundwater assessment and management",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "State-level mission for JJM planning and coordination",
+    "source_links": "https://cag.gov.in/ag/jharkhand/en/audit-report/details/126028"
   },
   {
     "sector": "Water",
-    "institution_name": "Delhi Jal Board (DJB)",
+    "institution_name": "Department of Water Resources, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Urban water supply in Delhi",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Management and development of water resources in Jharkhand",
+    "source_links": "https://en.wikipedia.org/wiki/Department_of_Water_Resources_(Jharkhand)"
   },
   {
     "sector": "Water",
-    "institution_name": "WaterAid India",
+    "institution_name": "District Water and Sanitation Missions (DWSMs)",
+    "institution_type": "Government Department",
+    "role": "District-level JJM implementation coordination",
+    "source_links": "https://cag.gov.in/ag/jharkhand/en/audit-report/details/126028"
+  },
+  {
+    "sector": "Water",
+    "institution_name": "Muskan Vikas Sanstha",
     "institution_type": "NGO",
-    "role": "WASH programs and advocacy",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Water security, climate resilience, Jal Jeevan Mission support in Simdega",
+    "source_links": "https://www.linkedin.com/posts/mritunjaychandra_jalchhajanmission-jaljeevanmission-muskanvikassanstha-activity-7389930627841789952-jAWk"
   },
   {
     "sector": "Water",
-    "institution_name": "Centre for Science and Environment (CSE)",
+    "institution_name": "Lok Prerna (Deoghar)",
     "institution_type": "NGO",
-    "role": "Research and advocacy on water policy",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Drinking water, sanitation, rural development, natural resource management",
+    "source_links": "https://www.ngolists.com/top-10-ngos-in-deoghar"
   },
   {
     "sector": "Water",
-    "institution_name": "IIT Delhi (Hydrology & Water Resources)",
+    "institution_name": "IIT (ISM) Dhanbad",
     "institution_type": "University/Research",
-    "role": "Research on water resources and management",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Research on water resources, mining-water interactions, hydrology",
+    "source_links": "https://gyantarang.com/top-colleges-universities-in-jharkhand/"
   },
   {
     "sector": "Water",
-    "institution_name": "VA Tech Wabag",
-    "institution_type": "Company/Industry",
-    "role": "Water treatment and desalination",
-    "source_links": "https://www.worldbank.org/ext/en/topic/water"
+    "institution_name": "BIT Sindri",
+    "institution_type": "University/Research",
+    "role": "Engineering research including water and environmental projects",
+    "source_links": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2238916&reg=3&lang=1"
   },
   {
     "sector": "Water",
-    "institution_name": "India Water Portal",
+    "institution_name": "Jharkhand State Jal Jeevan Mission Implementation Support Agencies (ISAs)",
     "institution_type": "Platform/Initiative",
-    "role": "Knowledge sharing on water issues",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "NGOs/SHGs/CBOs empaneled for community mobilization in JJM",
+    "source_links": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=152025&ModuleId=3&reg=3&lang=2"
   },
   {
     "sector": "Agriculture",
-    "institution_name": "Ministry of Agriculture & Farmers Welfare",
+    "institution_name": "Agriculture, Animal Husbandry and Co-operative Department, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Policy and program leadership for agriculture",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Policy and program leadership for agriculture in Jharkhand",
+    "source_links": "https://agri.jharkhand.gov.in"
   },
   {
     "sector": "Agriculture",
-    "institution_name": "ICAR (Indian Council of Agricultural Research)",
+    "institution_name": "Jharkhand State Seeds & Organic Certification Agency",
+    "institution_type": "Government Department",
+    "role": "Seed distribution and organic certification support",
+    "source_links": "https://agri.jharkhand.gov.in"
+  },
+  {
+    "sector": "Agriculture",
+    "institution_name": "Birsa Agricultural University, Kanke (Ranchi)",
     "institution_type": "University/Research",
-    "role": "Agricultural research network",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Agricultural research, extension, and education",
+    "source_links": "https://gyantarang.com/top-colleges-universities-in-jharkhand/"
   },
   {
     "sector": "Agriculture",
-    "institution_name": "NABARD",
-    "institution_type": "Government Department",
-    "role": "Rural finance and development",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Agriculture",
-    "institution_name": "BAIF",
+    "institution_name": "Jharkhand Hill Resource Development Society",
     "institution_type": "NGO",
-    "role": "Livelihood and agriculture development",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Natural resource management, agriculture, livelihoods in tribal areas",
+    "source_links": "https://mitr.co.in/ngos/jharkhand-hill-resource-development-society-ranchi"
   },
   {
     "sector": "Agriculture",
-    "institution_name": "IARI (Pusa)",
-    "institution_type": "University/Research",
-    "role": "Agricultural research and extension",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Agriculture",
-    "institution_name": "Jain Irrigation",
+    "institution_name": "Tata Steel Rural Development Society (Jamshedpur)",
     "institution_type": "Company/Industry",
-    "role": "Micro-irrigation solutions",
-    "source_links": "https://www.worldbank.org/ext/en/topic/water"
+    "role": "Agriculture and livelihood programs in rural Jharkhand",
+    "source_links": "https://my.jspcb.org.in/jharkhand_industries.php"
   },
   {
     "sector": "Agriculture",
-    "institution_name": "e-NAM portal",
+    "institution_name": "Jharkhand Startup Policy – Agri-tech startups",
     "institution_type": "Platform/Initiative",
-    "role": "Online agricultural market",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Support for agri-tech, irrigation, soil conservation startups",
+    "source_links": "https://www.scribd.com/document/1041988868/Draft-Jharkhand-Startup-Policy"
   },
   {
     "sector": "Healthcare",
-    "institution_name": "Ministry of Health & Family Welfare (MoHFW)",
+    "institution_name": "Health, Medical Education and Family Welfare Department, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Policy and program leadership for health",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Policy and program leadership for health in Jharkhand",
+    "source_links": "https://jharkhand.gov.in/health"
   },
   {
     "sector": "Healthcare",
-    "institution_name": "National Health Authority (NHA)",
+    "institution_name": "Jharkhand State Health Society",
     "institution_type": "Government Department",
-    "role": "PM-JAY implementation",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Implementation of NHM and state health programs",
+    "source_links": "https://jharkhand.gov.in/health"
   },
   {
     "sector": "Healthcare",
-    "institution_name": "AIIMS",
+    "institution_name": "AIIMS Deoghar",
+    "institution_type": "University/Research",
+    "role": "Tertiary healthcare and medical education",
+    "source_links": "https://gyantarang.com/top-colleges-universities-in-jharkhand/"
+  },
+  {
+    "sector": "Healthcare",
+    "institution_name": "RIMS Ranchi (Rajendra Institute of Medical Sciences)",
     "institution_type": "University/Research",
     "role": "Tertiary care and medical research",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "source_links": "https://gyantarang.com/top-colleges-universities-in-jharkhand/"
   },
   {
     "sector": "Healthcare",
-    "institution_name": "PATH India",
+    "institution_name": "Jharkhand Integrated Social Welfare Association (JISWA)",
     "institution_type": "NGO",
-    "role": "Public health programs and innovation",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Health, environment, women empowerment programs",
+    "source_links": "https://jiswa.co.in/"
   },
   {
     "sector": "Healthcare",
-    "institution_name": "Apollo Hospitals",
+    "institution_name": "Kasturba Jan Jagran Samiti (Hazaribagh)",
+    "institution_type": "NGO",
+    "role": "Health, child welfare, community development",
+    "source_links": "https://mitr.co.in/ngos/kasturba-jan-jagran-samiti-hazaribagh"
+  },
+  {
+    "sector": "Healthcare",
+    "institution_name": "Tata Main Hospital (Jamshedpur)",
     "institution_type": "Company/Industry",
-    "role": "Private healthcare delivery",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Private healthcare delivery in industrial areas",
+    "source_links": "https://my.jspcb.org.in/jharkhand_industries.php"
   },
   {
     "sector": "Healthcare",
-    "institution_name": "eSanjeevani portal",
+    "institution_name": "Health & Nutrition Vigilance System (HNVS) – Jharkhand AI Mission",
     "institution_type": "Platform/Initiative",
-    "role": "Telemedicine services",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "AI-driven health governance and monitoring",
+    "source_links": "https://en.themooknayak.com/governance/jharkhand-unveils-roadmap-for-ai-driven-governance-digital-innovation-and-future-ready-it-ecosystem"
   },
   {
     "sector": "Education",
-    "institution_name": "Ministry of Education",
+    "institution_name": "School Education and Literacy Department, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Policy and program leadership for education",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "School education policy and implementation",
+    "source_links": "https://jharkhand.gov.in/school-education"
   },
   {
     "sector": "Education",
-    "institution_name": "NCERT",
+    "institution_name": "Higher and Technical Education Department, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Curriculum and teacher training",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Higher education policy and university coordination",
+    "source_links": "https://jharkhand.gov.in/hte"
   },
   {
     "sector": "Education",
-    "institution_name": "Pratham",
-    "institution_type": "NGO",
-    "role": "Foundational learning programs",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Education",
-    "institution_name": "TISS",
+    "institution_name": "Ranchi University",
     "institution_type": "University/Research",
-    "role": "Education policy and research",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Multi-disciplinary state university (arts, science, commerce, law, education)",
+    "source_links": "https://gyantarang.com/top-colleges-universities-in-jharkhand/"
   },
   {
     "sector": "Education",
-    "institution_name": "BYJU’S",
-    "institution_type": "Company/Industry",
-    "role": "EdTech platform",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "institution_name": "BIT Mesra",
+    "institution_type": "University/Research",
+    "role": "Engineering and management education",
+    "source_links": "https://gyantarang.com/top-colleges-universities-in-jharkhand/"
   },
   {
     "sector": "Education",
-    "institution_name": "DIKSHA platform",
+    "institution_name": "XLRI Jamshedpur",
+    "institution_type": "University/Research",
+    "role": "Management education and startup incubation (MoU with Jharkhand govt)",
+    "source_links": "https://indianmasterminds.com/news/jharkhand-govt-xlri-mou-startup-innovation-circular-economy-205640/"
+  },
+  {
+    "sector": "Education",
+    "institution_name": "Madait Jan Samiti (Ranchi)",
+    "institution_type": "NGO",
+    "role": "Education, tribal welfare, community development",
+    "source_links": "https://mitr.co.in/ngos/madait-jan-samiti-ranchi"
+  },
+  {
+    "sector": "Education",
+    "institution_name": "Jharkhand AI Innovation Hub / AI Park (proposed)",
     "institution_type": "Platform/Initiative",
-    "role": "Digital education content",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Startup incubation, skilling, academia-industry collaboration",
+    "source_links": "https://en.themooknayak.com/governance/jharkhand-unveils-roadmap-for-ai-driven-governance-digital-innovation-and-future-ready-it-ecosystem"
   },
   {
     "sector": "Environment",
-    "institution_name": "Ministry of Environment, Forest and Climate Change (MoEFCC)",
+    "institution_name": "Forest, Environment and Climate Change Department, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Environmental policy and regulation",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Environmental policy, forest management, climate action",
+    "source_links": "https://jharkhand.gov.in/forest"
   },
   {
     "sector": "Environment",
-    "institution_name": "CPCB",
+    "institution_name": "Jharkhand State Pollution Control Board (JSPCB)",
     "institution_type": "Government Department",
     "role": "Pollution monitoring and regulation",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "source_links": "https://my.jspcb.org.in/jharkhand_industries.php"
   },
   {
     "sector": "Environment",
-    "institution_name": "CSE",
-    "institution_type": "NGO",
-    "role": "Environmental research and advocacy",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "institution_name": "Central University of Jharkhand (Ranchi)",
+    "institution_type": "University/Research",
+    "role": "Environmental studies and sustainability research",
+    "source_links": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2238916&reg=3&lang=1"
   },
   {
     "sector": "Environment",
-    "institution_name": "IIT Delhi (Centre for Atmospheric Sciences)",
-    "institution_type": "University/Research",
-    "role": "Air quality and climate research",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "institution_name": "Green Point Welfare Society (Hazaribagh)",
+    "institution_type": "NGO",
+    "role": "Environment, waste management, community awareness",
+    "source_links": "https://mitr.co.in/ngos/green-point-welfare-society-hazaribagh"
   },
   {
     "sector": "Environment",
-    "institution_name": "ReNew Power",
+    "institution_name": "Tata Steel (Jamshedpur) – Environment Division",
     "institution_type": "Company/Industry",
-    "role": "Renewable energy projects",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Afforestation, water conservation, environmental sustainability",
+    "source_links": "https://my.jspcb.org.in/jharkhand_industries.php"
   },
   {
     "sector": "Environment",
-    "institution_name": "SAFAR",
+    "institution_name": "Jharkhand State AI Mission – Critical Minerals Administration System (CMAS)",
     "institution_type": "Platform/Initiative",
-    "role": "Air quality forecasting",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "AI-driven mineral and environmental governance",
+    "source_links": "https://en.themooknayak.com/governance/jharkhand-unveils-roadmap-for-ai-driven-governance-digital-innovation-and-future-ready-it-ecosystem"
   },
   {
     "sector": "Roads & Transport",
-    "institution_name": "Ministry of Road Transport & Highways (MoRTH)",
+    "institution_name": "Transport Department, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Highways and road policy",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Transport policy, vehicle registration, road safety",
+    "source_links": "https://jharkhand.gov.in/transport"
   },
   {
     "sector": "Roads & Transport",
-    "institution_name": "Delhi Transport Department",
+    "institution_name": "Rural Works Department, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Urban transport policy in Delhi",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Rural roads and bridges construction",
+    "source_links": "https://progressivejharkhand.wordpress.com/2026/03/30/jharkhand-state-budget-for-fy-2026-27-the-abua-dishom-our-own-budget/"
   },
   {
     "sector": "Roads & Transport",
-    "institution_name": "DMRC",
+    "institution_name": "Jharkhand State Road Transport Corporation (JSRTC)",
     "institution_type": "Government Department",
-    "role": "Metro rail operations",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "State bus transport services",
+    "source_links": "https://jharkhand.gov.in/transport"
   },
   {
     "sector": "Roads & Transport",
-    "institution_name": "WRI India",
-    "institution_type": "NGO",
-    "role": "Sustainable transport programs",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Roads & Transport",
-    "institution_name": "IIT Delhi (TRIPP)",
+    "institution_name": "NIT Jamshedpur",
     "institution_type": "University/Research",
-    "role": "Transport and road safety research",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Civil engineering and transport infrastructure research",
+    "source_links": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2238916&reg=3&lang=1"
   },
   {
     "sector": "Roads & Transport",
-    "institution_name": "Ola Electric",
-    "institution_type": "Company/Industry",
-    "role": "EV manufacturing and mobility",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Roads & Transport",
-    "institution_name": "mParivahan app",
+    "institution_name": "Jharkhand Startup Policy – Transportation startups",
     "institution_type": "Platform/Initiative",
-    "role": "Digital transport services",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Support for transport and logistics startups",
+    "source_links": "https://www.scribd.com/document/1041988868/Draft-Jharkhand-Startup-Policy"
   },
   {
     "sector": "Electricity",
-    "institution_name": "Ministry of Power",
+    "institution_name": "Energy Department, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Power sector policy",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Power sector policy and DISCOM oversight",
+    "source_links": "https://jharkhand.gov.in/energy"
   },
   {
     "sector": "Electricity",
-    "institution_name": "MNRE",
+    "institution_name": "Jharkhand Bijli Vitran Nigam Limited (JBVNL)",
     "institution_type": "Government Department",
-    "role": "Renewable energy policy",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Electricity distribution in Jharkhand",
+    "source_links": "https://jharkhand.gov.in/energy"
   },
   {
     "sector": "Electricity",
-    "institution_name": "Delhi DISCOMs (BSES, TPDDL, TPVNL)",
+    "institution_name": "Damodar Valley Corporation (DVC)",
+    "institution_type": "Company/Industry",
+    "role": "Power generation and distribution in Damodar basin",
+    "source_links": "https://my.jspcb.org.in/jharkhand_industries.php"
+  },
+  {
+    "sector": "Electricity",
+    "institution_name": "Tata Power (Jamshedpur distribution)",
+    "institution_type": "Company/Industry",
+    "role": "Urban electricity distribution in Jamshedpur",
+    "source_links": "https://my.jspcb.org.in/jharkhand_industries.php"
+  },
+  {
+    "sector": "Electricity",
+    "institution_name": "Jharkhand Renewable Energy Development Agency (JREDA)",
     "institution_type": "Government Department",
-    "role": "Electricity distribution in Delhi",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Renewable energy promotion and implementation",
+    "source_links": "https://jharkhand.gov.in/energy"
   },
   {
     "sector": "Electricity",
-    "institution_name": "CEEW",
+    "institution_name": "Jharkhand Startup Policy – Green energy startups",
+    "institution_type": "Platform/Initiative",
+    "role": "Support for renewable energy and energy efficiency startups",
+    "source_links": "https://www.scribd.com/document/1041988868/Draft-Jharkhand-Startup-Policy"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "Home Department, Govt of Jharkhand",
+    "institution_type": "Government Department",
+    "role": "Internal security, police administration",
+    "source_links": "https://jharkhand.gov.in/home"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "Jharkhand Police",
+    "institution_type": "Government Department",
+    "role": "Law enforcement and public safety",
+    "source_links": "https://jharkhand.gov.in/police"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "Jharkhand State Disaster Management Authority (JSDMA)",
+    "institution_type": "Government Department",
+    "role": "Disaster preparedness and response",
+    "source_links": "https://jharkhand.gov.in/disaster-management"
+  },
+  {
+    "sector": "Public Safety",
+    "institution_name": "SaveLIFE Foundation (Jharkhand programs)",
     "institution_type": "NGO",
-    "role": "Energy policy research",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Road safety and emergency care training",
+    "source_links": "https://www.ngolists.com/top-10-ngos-in-deoghar"
   },
   {
-    "sector": "Electricity",
-    "institution_name": "IIT Delhi (Centre for Energy Studies)",
+    "sector": "Public Safety",
+    "institution_name": "NIT Jamshedpur – Road Safety Research",
     "institution_type": "University/Research",
-    "role": "Energy research and innovation",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Transport safety and infrastructure research",
+    "source_links": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2238916&reg=3&lang=1"
   },
   {
-    "sector": "Electricity",
-    "institution_name": "NTPC",
-    "institution_type": "Company/Industry",
-    "role": "Power generation",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Electricity",
-    "institution_name": "UJALA portal",
+    "sector": "Public Safety",
+    "institution_name": "Chief Minister Data Intelligence Platform (CM-DIP) – Jharkhand AI Mission",
     "institution_type": "Platform/Initiative",
-    "role": "LED distribution program",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "AI-driven governance and public safety analytics",
+    "source_links": "https://en.themooknayak.com/governance/jharkhand-unveils-roadmap-for-ai-driven-governance-digital-innovation-and-future-ready-it-ecosystem"
   },
   {
-    "sector": "Public Safety",
-    "institution_name": "Ministry of Home Affairs (MHA)",
+    "sector": "Waste Management",
+    "institution_name": "Urban Development and Housing Department, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Internal security and public safety",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Urban solid waste management policy",
+    "source_links": "https://jharkhand.gov.in/urban-development"
   },
   {
-    "sector": "Public Safety",
-    "institution_name": "NDMA",
+    "sector": "Waste Management",
+    "institution_name": "Jharkhand State Pollution Control Board (JSPCB)",
     "institution_type": "Government Department",
-    "role": "Disaster management policy",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Waste regulation and monitoring",
+    "source_links": "https://my.jspcb.org.in/jharkhand_industries.php"
   },
   {
-    "sector": "Public Safety",
-    "institution_name": "Delhi Police",
+    "sector": "Waste Management",
+    "institution_name": "Ranchi Municipal Corporation",
     "institution_type": "Government Department",
-    "role": "Law enforcement in Delhi",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Solid waste management in Ranchi",
+    "source_links": "https://jharkhand.gov.in/urban-development"
   },
   {
-    "sector": "Public Safety",
-    "institution_name": "SaveLIFE Foundation",
+    "sector": "Waste Management",
+    "institution_name": "Green Point Welfare Society (Hazaribagh)",
     "institution_type": "NGO",
-    "role": "Road safety and emergency care",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Waste management and community awareness",
+    "source_links": "https://mitr.co.in/ngos/green-point-welfare-society-hazaribagh"
   },
   {
-    "sector": "Public Safety",
-    "institution_name": "IIIT Delhi",
-    "institution_type": "University/Research",
-    "role": "Cybersecurity and AI research",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Public Safety",
-    "institution_name": "Staqu (AI for policing)",
+    "sector": "Waste Management",
+    "institution_name": "Tata Steel – Waste Management & Circular Economy",
     "institution_type": "Company/Industry",
-    "role": "AI-based surveillance solutions",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Industrial waste management and recycling",
+    "source_links": "https://my.jspcb.org.in/jharkhand_industries.php"
   },
   {
-    "sector": "Public Safety",
-    "institution_name": "National Cyber Crime Portal",
+    "sector": "Waste Management",
+    "institution_name": "Jharkhand Startup Policy – Waste & residual utilization startups",
     "institution_type": "Platform/Initiative",
-    "role": "Cybercrime reporting",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Support for waste-to-value startups",
+    "source_links": "https://www.scribd.com/document/1041988868/Draft-Jharkhand-Startup-Policy"
   },
   {
-    "sector": "Waste Management",
-    "institution_name": "MoHUA",
+    "sector": "Other",
+    "institution_name": "Department of Finance, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Urban development and Swachh Bharat",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "State budgeting and fiscal policy",
+    "source_links": "https://finance.jharkhand.gov.in/budget2026.aspx"
   },
   {
-    "sector": "Waste Management",
-    "institution_name": "Delhi Municipal Corporations (SDMC, NDMC, EDMC)",
+    "sector": "Other",
+    "institution_name": "State Planning Office, Govt of Jharkhand",
     "institution_type": "Government Department",
-    "role": "Solid waste management in Delhi",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Development planning and Innovative Jharkhand Fund",
+    "source_links": "https://www.linkedin.com/posts/rathin-bhadra-75425b1a6_innovativejharkhandfund-indianstartupassociation-activity-7417629271982059520-sjXK"
   },
   {
-    "sector": "Waste Management",
-    "institution_name": "Chintan",
+    "sector": "Other",
+    "institution_name": "Jharkhand Industrial Infrastructure Development Corporation (JIIDC)",
+    "institution_type": "Government Department",
+    "role": "Industrial infrastructure and startup incubation",
+    "source_links": "https://indianmasterminds.com/news/jharkhand-govt-xlri-mou-startup-innovation-circular-economy-205640/"
+  },
+  {
+    "sector": "Other",
+    "institution_name": "Indian Startup Association (ISUA) Jharkhand",
     "institution_type": "NGO",
-    "role": "Waste picker integration and recycling",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Startup ecosystem advocacy and support",
+    "source_links": "https://www.linkedin.com/posts/rathin-bhadra-75425b1a6_innovativejharkhandfund-indianstartupassociation-activity-7417629271982059520-sjXK"
   },
   {
-    "sector": "Waste Management",
-    "institution_name": "TERI",
+    "sector": "Other",
+    "institution_name": "IIT (ISM) Dhanbad, NIT Jamshedpur, BIT Mesra, Central University of Jharkhand",
     "institution_type": "University/Research",
-    "role": "Environmental research and waste solutions",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "STEM research and innovation (FIST-funded)",
+    "source_links": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2238916&reg=3&lang=1"
   },
   {
-    "sector": "Waste Management",
-    "institution_name": "Ramky Enviro",
-    "institution_type": "Company/Industry",
-    "role": "Waste management services",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Waste Management",
-    "institution_name": "Swachh Survekshan",
+    "sector": "Other",
+    "institution_name": "Startup Jharkhand Portal (proposed)",
     "institution_type": "Platform/Initiative",
-    "role": "Urban sanitation rankings",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Other",
-    "institution_name": "MeitY (Ministry of Electronics & IT)",
-    "institution_type": "Government Department",
-    "role": "Digital India leadership",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Other",
-    "institution_name": "NITI Aayog",
-    "institution_type": "Government Department",
-    "role": "Policy think tank and convergence",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Other",
-    "institution_name": "Centre for Policy Research (CPR)",
-    "institution_type": "NGO",
-    "role": "Policy research and governance",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Other",
-    "institution_name": "IITs (data science)",
-    "institution_type": "University/Research",
-    "role": "Data-driven governance research",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Other",
-    "institution_name": "Tech Mahindra (CSC support)",
-    "institution_type": "Company/Industry",
-    "role": "CSC operations and digital services",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
-  },
-  {
-    "sector": "Other",
-    "institution_name": "data.gov.in",
-    "institution_type": "Platform/Initiative",
-    "role": "Open government data",
-    "source_links": "https://www.un.org/sustainabledevelopment/water-and-sanitation/"
+    "role": "Startup registration, tracking, academia-industry-investor platform",
+    "source_links": "https://www.scribd.com/document/1041988868/Draft-Jharkhand-Startup-Policy"
   }
 ]

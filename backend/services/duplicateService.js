@@ -12,10 +12,16 @@ const client = new OpenAI({
 
 
 // =====================================
-// DUPLICATE TIMEOUT
+// SETTINGS
 // =====================================
 
 const DUPLICATE_TIMEOUT = 10000;
+
+// Main threshold
+const DUPLICATE_THRESHOLD = 0.78;
+
+// Strong local match threshold
+const LOCAL_SIMILARITY_THRESHOLD = 0.60;
 
 
 // =====================================
@@ -23,11 +29,272 @@ const DUPLICATE_TIMEOUT = 10000;
 // =====================================
 
 const normalizeText = (text) => {
+
   return String(text || "")
     .toLowerCase()
     .replace(/[^\w\s]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
+
+};
+
+
+// =====================================
+// TOKENIZE + BASIC SEMANTIC NORMALIZATION
+// =====================================
+
+const STOP_WORDS = new Set([
+  "the",
+  "a",
+  "an",
+  "is",
+  "are",
+  "was",
+  "were",
+  "in",
+  "on",
+  "at",
+  "of",
+  "to",
+  "for",
+  "and",
+  "or",
+  "our",
+  "their",
+  "there",
+  "this",
+  "that",
+  "have",
+  "has",
+  "been",
+  "because",
+  "with",
+  "from",
+  "do",
+  "does",
+  "not"
+]);
+
+
+const SYNONYMS = {
+  enough: "sufficient",
+  sufficient: "sufficient",
+
+  unable: "lack",
+  lacking: "lack",
+
+  farmers: "farmer",
+  vegetables: "vegetable",
+
+  cultivation: "grow",
+  growing: "grow",
+  grown: "grow",
+
+  damaged: "bad",
+  badly: "bad",
+  poor: "bad",
+  condition: "bad",
+
+  many: "multiple",
+  several: "multiple",
+  full: "multiple"
+};
+
+
+const normalizeWord = (word) => {
+
+  let normalized = word.toLowerCase();
+
+
+  // Convert simple plurals to singular
+  if (
+    normalized.length > 4 &&
+    normalized.endsWith("ies")
+  ) {
+    normalized =
+      normalized.slice(0, -3) + "y";
+  } else if (
+    normalized.length > 4 &&
+    normalized.endsWith("s") &&
+    !normalized.endsWith("ss")
+  ) {
+    normalized =
+      normalized.slice(0, -1);
+  }
+
+
+  // Apply basic synonym mapping
+  normalized =
+    SYNONYMS[normalized] || normalized;
+
+
+  return normalized;
+};
+
+
+const tokenize = (text) => {
+
+  return new Set(
+
+    normalizeText(text)
+      .split(" ")
+
+      .map(normalizeWord)
+
+      .filter(
+        (word) =>
+          word.length >= 3 &&
+          !STOP_WORDS.has(word)
+      )
+
+  );
+
+};
+
+
+// =====================================
+// JACCARD SIMILARITY
+// =====================================
+
+const jaccardSimilarity = (
+  textA,
+  textB
+) => {
+
+  const tokensA =
+    tokenize(textA);
+
+  const tokensB =
+    tokenize(textB);
+
+
+  if (
+    tokensA.size === 0 ||
+    tokensB.size === 0
+  ) {
+    return 0;
+  }
+
+
+  const intersection =
+    [...tokensA].filter(
+      (token) =>
+        tokensB.has(token)
+    );
+
+
+  const union =
+    new Set([
+      ...tokensA,
+      ...tokensB
+    ]);
+
+
+  const jaccard =
+    intersection.length /
+    union.size;
+
+
+  // Dice similarity gives more credit
+  // when two complaints share important words.
+  const dice =
+    (2 * intersection.length) /
+    (tokensA.size + tokensB.size);
+
+
+  // Combine both measures.
+  return (
+    jaccard * 0.4 +
+    dice * 0.6
+  );
+
+};
+
+
+// =====================================
+// LOCATION SIMILARITY
+// =====================================
+
+const locationSimilarity = (
+  locationA,
+  locationB
+) => {
+
+  const a =
+    normalizeText(locationA);
+
+  const b =
+    normalizeText(locationB);
+
+
+  if (!a || !b) {
+    return 0;
+  }
+
+
+  if (a === b) {
+    return 1;
+  }
+
+
+  if (
+    a.includes(b) ||
+    b.includes(a)
+  ) {
+    return 0.9;
+  }
+
+
+  return jaccardSimilarity(
+    a,
+    b
+  );
+
+};
+
+
+// =====================================
+// LOCAL SIMILARITY
+// =====================================
+
+const calculateLocalSimilarity = (
+  newProblem,
+  existingProblem
+) => {
+
+  const descriptionScore =
+    jaccardSimilarity(
+      newProblem.description,
+      existingProblem.description
+    );
+
+
+  const locationScore =
+    locationSimilarity(
+      newProblem.location,
+      existingProblem.location
+    );
+
+
+  /*
+   * Description is more important than location.
+   */
+
+  const finalScore =
+    (
+      descriptionScore * 0.75
+    ) +
+    (
+      locationScore * 0.25
+    );
+
+
+  return {
+    descriptionScore,
+    locationScore,
+    finalScore
+  };
+
 };
 
 
@@ -40,32 +307,39 @@ const localDuplicateCheck = (
   existingProblems
 ) => {
 
-  const newDescription =
-    normalizeText(newProblem.description);
-
-  const newLocation =
-    normalizeText(newProblem.location);
+  let bestMatch = null;
 
 
-  for (const problem of existingProblems) {
+  for (
+    const problem of existingProblems
+  ) {
 
-    const oldDescription =
-      normalizeText(problem.description);
+    const scores =
+      calculateLocalSimilarity(
+        newProblem,
+        problem
+      );
 
-    const oldLocation =
-      normalizeText(problem.location);
 
-
-    // Exact same complaint + location
     if (
-      newDescription === oldDescription &&
-      newLocation === oldLocation
+      !bestMatch ||
+      scores.finalScore >
+        bestMatch.score
     ) {
 
-      return {
-        duplicateFound: true,
-        duplicateOf: problem.id,
-        confidence: 1
+      bestMatch = {
+
+        problem,
+
+        score:
+          scores.finalScore,
+
+        descriptionScore:
+          scores.descriptionScore,
+
+        locationScore:
+          scores.locationScore
+
       };
 
     }
@@ -73,10 +347,68 @@ const localDuplicateCheck = (
   }
 
 
+  if (!bestMatch) {
+
+    return {
+      duplicateFound: false,
+      duplicateOf: null,
+      confidence: 0
+    };
+
+  }
+
+
+  console.log(
+    "LOCAL BEST MATCH:",
+    {
+      id:
+        bestMatch.problem.id,
+
+      score:
+        bestMatch.score,
+
+      descriptionScore:
+        bestMatch.descriptionScore,
+
+      locationScore:
+        bestMatch.locationScore
+    }
+  );
+
+
+  if (
+    bestMatch.score >=
+      LOCAL_SIMILARITY_THRESHOLD &&
+    bestMatch.locationScore >= 0.5
+  ) {
+
+    return {
+
+      duplicateFound: true,
+
+      duplicateOf:
+        bestMatch.problem.id,
+
+      confidence:
+        Math.min(
+          bestMatch.score,
+          0.99
+        )
+
+    };
+
+  }
+
+
   return {
+
     duplicateFound: false,
+
     duplicateOf: null,
-    confidence: 0
+
+    confidence:
+      bestMatch.score
+
   };
 
 };
@@ -96,15 +428,79 @@ const aiDuplicateCheck = async (
       (problem, index) => ({
         index,
         id: problem.id,
-        description: problem.description,
-        location: problem.location
+        description:
+          problem.description,
+        location:
+          problem.location
       })
     );
 
 
   const prompt = `
-You are checking whether a new citizen complaint
-is a duplicate of an existing complaint.
+You are the duplicate-detection engine for
+a citizen complaint platform in Jharkhand.
+
+Determine whether the NEW COMPLAINT describes
+the SAME underlying real-world problem as one
+of the EXISTING COMPLAINTS.
+
+A duplicate means:
+- same underlying issue
+- same or substantially overlapping location
+- different wording is allowed
+
+Examples of DUPLICATES:
+
+New:
+"Farmers cannot irrigate their fields because
+there is insufficient water."
+
+Existing:
+"Vegetable farmers are suffering because their
+fields do not have enough irrigation water."
+
+These are duplicates.
+
+Another example:
+
+New:
+"There are potholes all over the main road
+in our locality."
+
+Existing:
+"Our area's main road is badly damaged and
+full of potholes."
+
+These are duplicates.
+
+Examples that are NOT duplicates:
+
+New:
+"There is no drinking water in Ward 4."
+
+Existing:
+"The road in Ward 4 is full of potholes."
+
+These are NOT duplicates.
+
+New:
+"Farmers do not have irrigation water."
+
+Existing:
+"Farmers are unable to sell their crops."
+
+These are NOT duplicates.
+
+IMPORTANT:
+
+Do NOT mark complaints as duplicates merely
+because they share a category.
+
+Do NOT mark complaints as duplicates merely
+because they mention the same general topic.
+
+The underlying problem must be substantially
+the same.
 
 NEW COMPLAINT:
 ${newProblem.description}
@@ -115,27 +511,25 @@ ${newProblem.location}
 EXISTING COMPLAINTS:
 ${JSON.stringify(complaints)}
 
-A complaint is a duplicate only when it describes
-essentially the same problem in the same or very
-similar location.
+Return ONLY valid JSON.
 
-Return ONLY valid JSON:
+If duplicate:
 
 {
   "duplicateFound": true,
   "duplicateIndex": 0,
-  "confidence": 0.0
+  "confidence": 0.90
 }
 
-OR:
+If not duplicate:
 
 {
   "duplicateFound": false,
   "duplicateIndex": null,
-  "confidence": 0.0
+  "confidence": 0.20
 }
 
-confidence must be between 0 and 1.
+Confidence must be between 0 and 1.
 `;
 
 
@@ -158,25 +552,30 @@ confidence must be between 0 and 1.
 
           temperature: 0.1,
 
-          max_tokens: 100,
+          max_tokens: 150,
 
           stream: false
 
         }),
 
-        new Promise((_, reject) => {
+        new Promise(
+          (_, reject) => {
 
-          setTimeout(() => {
+            setTimeout(
+              () => {
 
-            reject(
-              new Error(
-                "Duplicate detection timed out."
-              )
+                reject(
+                  new Error(
+                    "Duplicate detection timed out."
+                  )
+                );
+
+              },
+              DUPLICATE_TIMEOUT
             );
 
-          }, DUPLICATE_TIMEOUT);
-
-        })
+          }
+        )
 
       ]);
 
@@ -231,8 +630,6 @@ confidence must be between 0 and 1.
       JSON.parse(cleaned);
 
 
-    // Validate response
-
     if (
       typeof result.duplicateFound !==
       "boolean"
@@ -257,14 +654,13 @@ confidence must be between 0 and 1.
     }
 
 
-    // If AI found duplicate
-
     if (
       result.duplicateFound === true &&
       Number.isInteger(
         result.duplicateIndex
       ) &&
-      result.confidence >= 0.75
+      result.confidence >=
+        DUPLICATE_THRESHOLD
     ) {
 
       const duplicate =
@@ -283,22 +679,31 @@ confidence must be between 0 and 1.
 
 
       return {
+
         duplicateFound: true,
-        duplicateOf: duplicate.id,
-        confidence: result.confidence
+
+        duplicateOf:
+          duplicate.id,
+
+        confidence:
+          result.confidence
+
       };
 
     }
 
 
-    // No reliable duplicate
-
     return {
+
       duplicateFound: false,
+
       duplicateOf: null,
+
       confidence:
         result.confidence
+
     };
+
 
   } catch (error) {
 
@@ -308,14 +713,14 @@ confidence must be between 0 and 1.
     );
 
 
-    // VERY IMPORTANT:
-    // Duplicate detection failure
-    // must never block submission.
-
     return {
+
       duplicateFound: false,
+
       duplicateOf: null,
+
       confidence: 0
+
     };
 
   }
@@ -332,23 +737,26 @@ const checkDuplicate = async (
   existingProblems
 ) => {
 
-  // No existing problems
   if (
     !existingProblems ||
     existingProblems.length === 0
   ) {
 
     return {
+
       duplicateFound: false,
+
       duplicateOf: null,
+
       confidence: 0
+
     };
 
   }
 
 
   // ===================================
-  // STEP 1: LOCAL EXACT MATCH
+  // STEP 1: LOCAL CHECK
   // ===================================
 
   const localResult =
@@ -386,5 +794,8 @@ const checkDuplicate = async (
 
 
 module.exports = {
-  checkDuplicate
+  checkDuplicate,
+  normalizeText,
+  jaccardSimilarity,
+  calculateLocalSimilarity
 };
