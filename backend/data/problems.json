@@ -1236,5 +1236,41 @@
     "humanReview": false,
     "status": "assigned",
     "createdAt": "2026-09-14T20:15:11.088Z"
+  },
+  {
+    "id": "1789458656036",
+    "description": "Humare area main raat ko roz choriyan hoti hai.",
+    "location": "Jamshedpur",
+    "imageUrl": null,
+    "category": "Public Safety",
+    "summary": "Residents report nightly thefts occurring in their area.",
+    "confidence": 0.95,
+    "duplicateFound": false,
+    "duplicateOf": null,
+    "duplicateCount": 1,
+    "assignedCollege": "Delhi Police",
+    "recommendedSolutions": [],
+    "routingReason": "Selected Delhi Police because it is linked to the relevant Public Safety solution/problem: Crime hotspots, CCTV surveillance networks.",
+    "humanReview": false,
+    "status": "assigned",
+    "createdAt": "2026-09-15T07:50:56.036Z"
+  },
+  {
+    "id": "1789459878689",
+    "description": "Humare area main roz choriyan hoti hai.",
+    "location": "Jamshedpur",
+    "imageUrl": null,
+    "category": "Public Safety",
+    "summary": "The area experiences daily thefts.",
+    "confidence": 0.95,
+    "duplicateFound": true,
+    "duplicateOf": "1789458656036",
+    "duplicateCount": 0,
+    "assignedCollege": "Jharkhand Police",
+    "recommendedSolutions": [],
+    "routingReason": "Selected Jharkhand Police because it is linked to the relevant Public Safety solution/problem: Crime hotspots in urban areas, CCTV surveillance networks.",
+    "humanReview": false,
+    "status": "assigned",
+    "createdAt": "2026-09-15T08:11:18.689Z"
   }
 ]
