@@ -1,4 +1,4 @@
-# Sajha Samadhan — Frontend (SIH26043)
+# Sujh Bujh
 
 A React + Vite + Tailwind frontend for the Jharkhand societal-challenge
 crowdsourcing portal. Pastel base palette with a marigold "pop" accent used
